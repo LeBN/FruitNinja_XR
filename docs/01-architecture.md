@@ -131,7 +131,9 @@ Les scripts sont dans `Assets/FruitNinja/Scripts/`. Ils sont regroupés ici par 
 | `VolumeMusique` | applique le volume « Musique » à une source audio |
 | `Decor` | quelle scène de menu ou de jeu charger |
 | `RetourMenu` | bouton Retour de la scène de debug |
-| `BloomQuest` | réduit la portée du bloom sur Quest (décor ToonScapes) |
+| `RotationJoueur`, `ReglageRotation` | rotation instantanée ou continue, appliquée aux manettes |
+| `LimiteZone` | garde le joueur dans un cercle de 7 m autour de son point de départ |
+| `CubemapOr` | donne au shader de l'or le reflet précalculé du décor de la scène |
 
 ---
 
@@ -173,7 +175,7 @@ Tout est dans les **PlayerPrefs** de Unity (le registre sous Windows, un fichier
 | Clé | Contenu |
 |---|---|
 | `param_volume_general`, `param_volume_musique`, `param_volume_effets` | volumes (0 à 1) |
-| `param_vibrations`, `param_high_poly` | options Oui/Non |
+| `param_vibrations`, `param_high_poly`, `param_rotation_continue` | options Oui/Non |
 | `classement_scores` | le classement, sérialisé en **JSON** (`score`, `difficulte`, `date`) |
 | `HighScore` | meilleur score (hérité du S7) |
 

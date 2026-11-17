@@ -152,7 +152,7 @@ Matériel : PC Intel Core i7-11700K, NVIDIA GeForce RTX 3080, 64 Go de RAM, Wind
 | Gameplay | ⏳ à noter | ✅ fruits, bonus, bombes, coupes, score |
 | Effets visuels (variante du build) | ⏳ à noter | ✅ variante Quest |
 | UI et fonctions héritées | ⏳ à noter | ✅ menus, paramètres, classement |
-| Exécution (chargement, fluidité, crash) | ⏳ à noter | 🟡 décor détaillé (high poly) : **~40 FPS** observés, bloom trop fort → bloom réduit sur Quest ; décor low poly : par défaut |
+| Exécution (chargement, fluidité, crash) | ⏳ à noter | 🟡 décor détaillé (high poly) : **~40 FPS** observés, éclairs du bloom dans la végétation → caméra en Stop NaN + bloom plafonné ; décor low poly : par défaut |
 
 > FPS : valeur observée à l'œil dans le casque, **sans outil de mesure**. ⏳ Mesure à refaire avec l'**OVR Metrics Tool** (FPS, temps GPU), en jeu pendant une vague de fruits, pour les deux décors.
 
@@ -189,7 +189,7 @@ Matériel : PC Intel Core i7-11700K, NVIDIA GeForce RTX 3080, 64 Go de RAM, Wind
 
 Unités : Mo = 1 048 576 octets. L'APK étant lui-même une archive compressée, il se compare au **ZIP** Windows, pas au dossier.
 
-**5. Lien avec les tests de la Task 4** 🟡 — la version Quest utilise des effets allégés, le décor low poly par défaut et un bloom de portée réduite en décor détaillé : c'est la réponse aux 40 FPS observés en high poly. La version PC garde les effets complets et le décor détaillé par défaut. ⏳ À confirmer par des mesures (OVR Metrics Tool).
+**5. Lien avec les tests de la Task 4** 🟡 — la version Quest utilise des effets allégés, le décor low poly par défaut et un bloom protégé contre les éclairs (Stop NaN, plafond) : c'est la réponse aux 40 FPS observés en high poly. La version PC garde les effets complets et le décor détaillé par défaut. ⏳ À confirmer par des mesures (OVR Metrics Tool).
 
 > **Résultat attendu** : comparaison argumentée (taille, qualité, fonctionnement). → 🟡 tailles et qualité faites, mesures de fluidité à compléter.
 
@@ -212,7 +212,7 @@ Unités : Mo = 1 048 576 octets. L'APK étant lui-même une archive compressée,
 | Version Android en Multi Pass | passée en Single Pass Instanced | — |
 | Caméra cachée dans le modèle du canon | import des caméras désactivé | — |
 | APK doublé par le static batching | option retirée | — |
-| 40 FPS en décor détaillé sur Quest | décor low poly par défaut, bloom réduit | mesure précise à faire |
+| 40 FPS et éclairs du bloom en décor détaillé sur Quest | décor low poly par défaut, Stop NaN + bloom plafonné | mesure précise à faire |
 | — | — | mode **entraînement** non réalisé ; pomme d'or = +1 point comme un fruit |
 
 ---

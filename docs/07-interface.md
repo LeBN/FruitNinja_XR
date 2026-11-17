@@ -48,6 +48,7 @@ Un canvas en espace monde, à environ 3 m du joueur : le logo, **Jouer**, **Quit
 | Effets sonores | curseur | effets 3D et sabres |
 | Vibrations | Oui / Non | active ou coupe les vibrations ; une petite vibration confirme le « Oui » |
 | Décor détaillé | Oui / Non | décor **High poly** (ToonScapes) ou **Low poly** ; recharge le menu dans le décor choisi et rouvre le panneau |
+| Rotation | Instantanée / Continue | type de rotation au joystick (voir [VR et interactions](03-vr-et-interactions.md#rotation-et-zone-de-jeu)) |
 | Debug | bouton | ouvre la scène `Debug_Fruits` (tous les fruits exposés), qui a son propre bouton Retour |
 | Effacer scores | bouton | vide le classement |
 | Retour | bouton | revient à l'accueil |

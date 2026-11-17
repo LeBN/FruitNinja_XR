@@ -45,9 +45,18 @@ Le profil `PostProcess_Nuit` (dans `Assets/Settings`) s'applique à toute la sc�
 | Tonemapping | **ACES** | rendu « cinéma », noirs profonds, hautes lumières douces |
 | Exposition / contraste | +1,1 / 6 | compense le côté sombre de la nuit sans délaver |
 | Lift / Gamma | −0,02 / +0,06 | noirs plus profonds, tons moyens lisibles |
-| Bloom | intensité 2, seuil 1, teinte rouge | halo autour de la lune, des lames et des textes lumineux |
+| Bloom | intensité 2, **seuil 1,5**, plafond 8, teinte rouge | halo autour des lames, des textes lumineux et de la lune ; les textes blancs posés sur le bois restent nets |
 
-Sur Quest, dans le décor ToonScapes, `BloomQuest` **réduit la portée du bloom** au lancement : étalement 0,3 au lieu de 0,66, 4 niveaux de flou au lieu de 6. Le bloom est un des effets les plus coûteux sur une puce mobile, et ses surfaces brillantes le rendaient trop envahissant.
+### Les « éclairs » du bloom sur Quest
+
+Dans le casque uniquement, des points des arbres et des plantes ToonScapes s'illuminaient brutalement. La cause probable : la puce du Quest calcule en **demi-précision**, et les reflets très serrés du shader de végétation peuvent y produire des pixels **invalides (NaN) ou démesurés**, que le bloom étale ensuite en flash. Le problème ne dépend donc pas de l'intensité du bloom.
+
+Deux protections, sans toucher au pack :
+
+| Protection | Effet |
+|---|---|
+| **Stop NaN** sur la caméra du rig (`UniversalAdditionalCameraData.stopNaN`) | les pixels invalides sont remplacés avant le post-traitement |
+| **Plafond du bloom** (`clamp` = 8) | un pixel trop lumineux ne peut plus dépasser cette valeur dans le calcul du bloom |
 
 ---
 
@@ -113,7 +122,7 @@ Tous sont dans `Assets/FruitNinja/Shaders/`, écrits en HLSL pour l'URP et compa
 
 Un métal n'a presque pas de couleur propre : **il reflète son environnement teinté de sa couleur**. La nuit, un vrai reflet en temps réel serait quasi noir, et coûteux. La solution :
 
-1. une **cubemap** (`Cubemap_Reflet_Or`) est capturée **une fois** depuis la zone de jeu ;
+1. une **cubemap par décor** (`Cubemap_Reflet_Or_LowPoly`, `Cubemap_Reflet_Or_HighPoly`) est capturée **une fois** depuis la zone de jeu ; le composant `CubemapOr` de chaque scène la fournit au shader (texture globale), et elle sert aussi de **reflet d'environnement** de la scène, donc aux lames ;
 2. le shader calcule la direction du reflet (`reflect(-vue, normale)`) et lit la cubemap dans cette direction ;
 3. il teinte le résultat en or et ajoute le reflet de la lune et des bords plus brillants (effet Fresnel).
 
@@ -136,7 +145,6 @@ Le pack ToonScapes – Spring Isles fournit ses propres **shaders URP** (génér
 | Sol | herbe de terrain du pack, shader `SurfaceTop` (projection vue du dessus, tuile de 1 m), peu de reflets |
 | Touffes d'herbe | copie du matériau : normale inversée, brillance 0,84 → 0,1 |
 | Montagnes et collines de fond | copie des matériaux **sans la brume de hauteur intégrée**, réglée pour le jour, qui les délavait |
-| Bloom sur Quest | portée réduite (voir plus haut) |
 
 Les matériaux ajustés sont des **copies** dans `Assets/FruitNinja/Materials/ToonScapes/` : le pack lui-même n'est jamais modifié.
 

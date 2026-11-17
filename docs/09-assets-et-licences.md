@@ -35,7 +35,7 @@ Le dépôt est **public** : on n'y met que ce qu'on a le droit de redistribuer, 
 | JTS – The Samurai Sword | pack du S7 | les deux sabres (Nodachi) |
 | Simple Nature Pack | pack du S7 | décor low poly (arbres, rochers, sol, collines) |
 | ToonScapes – Spring Isles | Unity Asset Store (acheté) | décor high poly |
-| Canon stylisé (`stylized_canon.glb`) | modèle **Sketchfab** (export glTF), converti avec Blender — ⚠️ auteur et licence à vérifier et à créditer | canons lanceurs |
+| Canon stylisé | « [Stylized Canon](https://sketchfab.com/3d-models/stylized-canon-3f7b731c25d9456d98e28bf2612f818b) » par **Anggo Ari Wibowo** (Sketchfab), licence **CC BY 4.0** : crédit obligatoire, modifications et usage commercial autorisés. Modifié : boulets retirés, fût redressé, converti en FBX (`Modeles/Canon/CREDITS.txt`) | canons lanceurs |
 
 ### Effets
 
@@ -48,7 +48,7 @@ Le dépôt est **public** : on n'y met que ce qu'on a le droit de redistribuer, 
 | Ressource | Source / licence | Utilisation |
 |---|---|---|
 | Logo « Fruity Ninja VR » | image générée par IA | menu, écran de démarrage |
-| UI en bois et or | planche d'éléments d'UI (JPG, probablement Freepik d'après le nom du fichier) — ⚠️ licence et attribution à vérifier | boutons, planches, curseurs |
+| UI en bois et or | « Collection d'éléments d'interface utilisateur de jeu en bois » : **vecteur Premium** [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm), licence Premium, **crédit de l'artiste obligatoire** (`UI/Bois/CREDITS.txt`) | boutons, planches, curseurs |
 | Lilita One | Google Fonts, **SIL Open Font License 1.1** (`Polices/LilitaOne_Licence_OFL.txt`) | tous les textes |
 | Émoji pastèque | **Noto Emoji** (Google) (`UI/Icone/NotoEmoji_Licence.txt`) | icône de l'application |
 
@@ -70,7 +70,7 @@ Le dépôt est **public** : on n'y met que ce qu'on a le droit de redistribuer, 
 | Meta XR SDK | Oculus SDK License | fonctionnalités Quest |
 
 > [!WARNING]
-> Deux ressources ont une **origine à confirmer** (canon et planche d'UI). Avant une diffusion publique, il faut retrouver leur page d'origine et ajouter l'attribution demandée par leur licence (souvent « CC BY » sur Sketchfab, « Designed by Freepik » sur Freepik).
+> **Crédit à compléter** : le nom de l'artiste de l'interface en bois (Magnific) doit être ajouté dans `UI/Bois/CREDITS.txt` et ici, comme l'exige la licence Premium (« En créditer l'artiste : Obligatoire »).
 
 ---
 

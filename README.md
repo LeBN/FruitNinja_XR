@@ -60,7 +60,7 @@ Tu es dans une clairière, la nuit, sous une lune rouge, un sabre dans chaque ma
 |---|---|---|
 | **Gameplay** | 3 difficultés (durée 90 / 60 / 45 s, cadence, part de bombes), fruits, pomme d'or, bombes (-3 points), score, classement des 8 meilleurs scores | [Gameplay](docs/02-gameplay.md) |
 | **Découpe** | Coupe réelle des maillages en deux moitiés physiques (EzySlice) au point de contact de la lame | [Gameplay](docs/02-gameplay.md#la-découpe) |
-| **VR** | OpenXR + Meta XR, deux sabres, rayons dans les menus seulement, vibrations, placement des fruits selon ta taille | [VR et interactions](docs/03-vr-et-interactions.md) |
+| **VR** | OpenXR + Meta XR, deux sabres, rayons dans les menus seulement, vibrations, rotation instantanée ou continue, zone de jeu de 7 m, placement des fruits selon ta taille | [VR et interactions](docs/03-vr-et-interactions.md) |
 | **Rendu** | URP, nuit bleue et lune rouge, éclairage précalculé (indirect + AO), occlusion culling, shaders maison | [Rendu et shaders](docs/04-rendu-et-shaders.md) |
 | **Effets** | Jus et explosion en **deux versions** (PCVR complète, Quest allégée), choisies automatiquement | [Effets multiplateforme](docs/05-effets-multiplateforme.md) |
 | **Audio** | Musiques, ambiance de forêt de nuit, **tous les effets en 3D** à l'endroit où ils se produisent | [Audio](docs/06-audio.md) |
@@ -131,7 +131,6 @@ Le même projet produit deux versions. Ce qui change est décidé **automatiquem
 | Calcul du rendu | carte graphique du PC | puce mobile du casque |
 | Effets de particules | version **PCVR** complète | version **Quest** allégée |
 | Décor par défaut | **High poly** (ToonScapes) | **Low poly** (d'origine) |
-| Bloom (ToonScapes) | complet | portée réduite |
 | Rendu stéréo | Single Pass Instanced | Single Pass Instanced (Multiview) |
 
 Le décor se change dans **Paramètres → Décor détaillé**.
@@ -220,7 +219,9 @@ Les dossiers des packs tiers (Low Poly Fruits, Simple Nature Pack, sabre JTS, Ez
 ## Crédits et licences
 
 - **Projet** : [LeBN](https://github.com/LeBN), EFREI (I3 IRV), à partir du Fruit Ninja VR du S7.
-- **Modèles, sons et décors** : packs listés dans [Assets et licences](docs/09-assets-et-licences.md).
+- **Canon** : « [Stylized Canon](https://sketchfab.com/3d-models/stylized-canon-3f7b731c25d9456d98e28bf2612f818b) » par [Anggo Ari Wibowo](https://sketchfab.com/anggoariwibowo), licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (modifié).
+- **Interface en bois** : vecteur Premium [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm) (crédit de l'artiste obligatoire, voir [Assets et licences](docs/09-assets-et-licences.md)).
+- **Autres modèles, sons et décors** : packs listés dans [Assets et licences](docs/09-assets-et-licences.md).
 - **Police** : Lilita One (SIL Open Font License 1.1).
 - **Icône** : émoji pastèque de Noto Emoji (Google).
 

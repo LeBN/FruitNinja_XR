@@ -103,7 +103,7 @@ public static class PlatformFx
 - **Contrôle** : au lancement, chaque sabre écrit dans le log la variante utilisée (`[FX] … variante Quest`).
 
 > [!NOTE]
-> Le même `PlatformFx.IsQuest` sert ailleurs : décor par défaut (`Parametres.HighPoly`) et portée du bloom (`BloomQuest`).
+> Le même `PlatformFx.IsQuest` sert ailleurs : décor par défaut (`Parametres.HighPoly`).
 
 ---
 

@@ -1,0 +1,12 @@
+Éléments d'interface en bois et or (UI/Bois/*.png et UI/Boutons/Bouton_Bois_Vide.png)
+
+Source : « Collection d'éléments d'interface utilisateur de jeu en bois pour la conception d'interface »
+Vecteur Premium n° 423087565, Magnific :
+https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm
+
+Licence : Premium (Magnific). Crédit de l'artiste OBLIGATOIRE.
+Crédit : Image de [NOM DE L'ARTISTE] sur Magnific   <- nom à compléter (indiqué dans « Comment créditer ? »)
+
+Modifications apportées pour Fruity Ninja VR : éléments découpés depuis la planche JPG,
+détourés, décontaminés du fond blanc, couleurs accordées au logo du jeu (teinte, saturation,
+contraste) et contour sombre réchauffé.

@@ -115,6 +115,18 @@ Le projet est en **Single Pass Instanced sur PC et sur Quest**. La version Quest
 
 ---
 
+## Rotation et zone de jeu
+
+| Réglage | Fonctionnement |
+|---|---|
+| **Rotation** (Paramètres) | *Instantanée* (par crans, par défaut, plus confortable) ou *Continue*. `RotationJoueur` applique le choix au `ControllerInputActionManager` des manettes (propriété `smoothTurnEnabled`) à chaque chargement de scène et à chaque changement. |
+| **Zone de 7 m** | `LimiteZone`, sur le rig, mesure la position de la **tête** par rapport au point de départ. Si elle sort du cercle (joystick, téléportation ou marche réelle), le rig est ramené au bord. Le cercle est visible dans l'éditeur en sélectionnant le rig. |
+
+> [!TIP]
+> On limite la **tête** et pas seulement le rig : dans un espace de jeu réel, on peut aussi sortir de la zone en marchant.
+
+---
+
 ## Pièges rencontrés
 
 | Symptôme | Cause | Correction |
@@ -122,6 +134,7 @@ Le projet est en **Single Pass Instanced sur PC et sur Quest**. La version Quest
 | La vue « sautait » sous le sol toutes les secondes sur Quest | le modèle FBX du canon contenait une **caméra** (exportée par erreur depuis Blender) : chaque canon qui apparaissait prenait l'affichage | import des caméras et lumières désactivé sur le FBX |
 | Le fruit de départ était trop haut | position fixe à 1,93 m du sol | placement selon la hauteur des yeux |
 | Objet visible dans un seul œil (risque) | shader sans macros stéréo | macros SPI dans tous les shaders maison |
+| Éclairs très lumineux dans les arbres, seulement dans le casque | pixels invalides ou démesurés (calcul en demi-précision sur la puce mobile) étalés par le bloom | caméra en **Stop NaN** + bloom plafonné (`clamp`) |
 
 ---
 

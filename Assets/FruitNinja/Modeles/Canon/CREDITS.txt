@@ -1,0 +1,13 @@
+Modèle du canon (Canon_Cartoon.fbx et textures Textures/Canon/)
+
+"Stylized Canon" par Anggo Ari Wibowo
+https://sketchfab.com/3d-models/stylized-canon-3f7b731c25d9456d98e28bf2612f818b
+Auteur : https://sketchfab.com/anggoariwibowo
+Licence : Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Modifications apportées pour Fruity Ninja VR :
+- boulets de canon retirés ;
+- fût pivoté pour pointer vers le haut ;
+- conversion glTF -> FBX avec Blender, textures exportées en PNG ;
+- matériaux URP refaits dans Unity (Mat_Canon_Fut, Mat_Canon_Support, Mat_Canon_Roues).

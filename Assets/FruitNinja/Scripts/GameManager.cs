@@ -216,6 +216,9 @@ public class GameManager : MonoBehaviour
         RespawnStartFruit();
 
 
+        // Classement (planche à droite du jeu)
+        Classement.Ajouter(score, difficultySelector != null ? difficultySelector.Current : Difficulty.Normal);
+
         // Mise à jour du High Score
         int previousHighScore = PlayerPrefs.GetInt("HighScore", 0);
         if (score > previousHighScore)

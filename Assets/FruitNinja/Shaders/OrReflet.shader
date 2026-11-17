@@ -1,18 +1,18 @@
 // Or entièrement métallique pour la pomme d'or : la couleur vient du reflet de l'environnement,
-// précalculé une fois dans une cubemap (capture de la scène depuis la zone de jeu), teinté en or.
-// + reflet de la lune (lumière principale) et bords plus brillants (Fresnel).
+// précalculé dans une cubemap PAR DÉCOR (fournie à la scène par le composant CubemapOr, texture
+// globale _RefletOrGlobal), teinté en or, avec contraste réglable, reflet de la lune et bords (Fresnel).
 // Léger (une cubemap, pas de sonde temps réel), compatible Single Pass Instanced et brouillard.
 Shader "FruitNinja/OrReflet"
 {
     Properties
     {
-        [NoScaleOffset] _Environnement ("Reflet précalculé (cubemap)", Cube) = "" {}
-        _Teinte ("Teinte de l'or", Color) = (1, 0.78, 0.32, 1)
-        _Intensite ("Intensité du reflet", Float) = 2.5
-        _Ambiant ("Lumière minimale", Float) = 0.18
-        _Fresnel ("Bords brillants", Float) = 0.6
-        _Eclat ("Reflet de la lune", Float) = 1.5
-        _Brillance ("Netteté du reflet de la lune", Float) = 64
+        _Teinte ("Teinte de l'or", Color) = (1, 0.55, 0.12, 1)
+        _Intensite ("Intensité du reflet", Float) = 1.1
+        _Contraste ("Contraste du reflet", Float) = 1.5
+        _Ambiant ("Lumière minimale", Float) = 0.02
+        _Fresnel ("Bords brillants", Float) = 0.35
+        _Eclat ("Reflet de la lune", Float) = 1.2
+        _Brillance ("Netteté du reflet de la lune", Float) = 80
     }
 
     SubShader
@@ -32,12 +32,14 @@ Shader "FruitNinja/OrReflet"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-            TEXTURECUBE(_Environnement);
-            SAMPLER(sampler_Environnement);
+            // Cubemap globale : une par décor (CubemapOr)
+            TEXTURECUBE(_RefletOrGlobal);
+            SAMPLER(sampler_RefletOrGlobal);
 
             CBUFFER_START(UnityPerMaterial)
                 half4 _Teinte;
                 half _Intensite;
+                half _Contraste;
                 half _Ambiant;
                 half _Fresnel;
                 half _Eclat;
@@ -79,14 +81,14 @@ Shader "FruitNinja/OrReflet"
                 float3 n = normalize(i.normalWS);
                 float3 v = normalize(GetWorldSpaceViewDir(i.positionWS));
                 float3 r = reflect(-v, n);
-                half3 env = SAMPLE_TEXTURECUBE(_Environnement, sampler_Environnement, r).rgb;
+                half3 env = SAMPLE_TEXTURECUBE(_RefletOrGlobal, sampler_RefletOrGlobal, r).rgb;
+                env = pow(max(env, 0.0h), _Contraste);
                 half fres = pow(1.0h - saturate(dot(n, v)), 4.0h);
                 // Métal : le reflet est teinté par la couleur du métal
-                half3 c = _Teinte.rgb * (env * _Intensite + _Ambiant);
-                c += _Teinte.rgb * fres * _Fresnel;
+                half3 c = _Teinte.rgb * (env * _Intensite + _Ambiant + fres * _Fresnel);
                 Light lune = GetMainLight();
                 half spec = pow(saturate(dot(r, lune.direction)), _Brillance) * _Eclat;
-                c += lune.color * spec * lerp(_Teinte.rgb, 1.0h, 0.5h);
+                c += lune.color * spec * lerp(_Teinte.rgb, 1.0h, 0.4h);
                 c = MixFog(c, i.fog);
                 return half4(c, 1);
             }

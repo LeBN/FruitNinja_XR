@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// Paramètres du joueur (menu Paramètres), sauvegardés dans les PlayerPrefs :
-/// volumes (général, musique et ambiance, effets) et vibrations.
+/// volumes (général, musique et ambiance, effets), vibrations, décor détaillé et type de rotation.
 /// </summary>
 public static class Parametres
 {
@@ -12,6 +12,7 @@ public static class Parametres
     const string KEffets = "param_volume_effets";
     const string KVibrations = "param_vibrations";
     const string KHighPoly = "param_high_poly";
+    const string KRotation = "param_rotation_continue";
 
     /// <summary>Appelé à chaque changement de réglage.</summary>
     public static event Action Change;
@@ -45,6 +46,13 @@ public static class Parametres
     {
         get => PlayerPrefs.GetInt(KHighPoly, PlatformFx.IsQuest ? 0 : 1) == 1;
         set { PlayerPrefs.SetInt(KHighPoly, value ? 1 : 0); Appliquer(); }
+    }
+
+    /// <summary>Rotation au joystick : continue (true) ou instantanée par crans (false, par défaut, plus confortable).</summary>
+    public static bool RotationContinue
+    {
+        get => PlayerPrefs.GetInt(KRotation, 0) == 1;
+        set { PlayerPrefs.SetInt(KRotation, value ? 1 : 0); Appliquer(); }
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]

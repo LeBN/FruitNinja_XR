@@ -33,13 +33,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambiant: 0.06
-    - _Brillance: 64
-    - _Eclat: 1.5
-    - _Fresnel: 0.6
-    - _Intensite: 1.6
+    - _Ambiant: 0.02
+    - _Brillance: 80
+    - _Contraste: 1.5
+    - _Eclat: 1.2
+    - _Fresnel: 0.35
+    - _Intensite: 1.1
     m_Colors:
     - _Couleur: {r: 1, g: 1, b: 1, a: 1}
-    - _Teinte: {r: 1, g: 0.62, b: 0.14, a: 1}
+    - _Teinte: {r: 1, g: 0.55, b: 0.12, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

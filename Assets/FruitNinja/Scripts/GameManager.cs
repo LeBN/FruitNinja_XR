@@ -28,6 +28,19 @@ public class GameManager : MonoBehaviour
     [Header("Audio")]
     public GameMusicManager music;
 
+    [Header("Séquence de départ")]
+    [Tooltip("Texte \"Prêt ?\" affiché avant la partie (désactivé par défaut).")]
+    public GameObject readyText;
+    public float readyDuration = 1.2f;
+    [Tooltip("Reflets lumineux des lames, lancés en même temps que le son.")]
+    public BladeShine[] bladeShines;
+    public AudioSource shineSource;
+    public AudioClip shineClip;
+    [Tooltip("Durée du balayage du reflet sur la lame (s).")]
+    public float shineSweepDuration = 0.8f;
+
+    private Coroutine startSequence;
+
 
     private void Start()
     {
@@ -81,16 +94,43 @@ public class GameManager : MonoBehaviour
         timeRemaining = gameDuration;
         UpdateTimerUI();
 
-        if (spawner != null)
-            spawner.StartSpawning();
-
         if (music != null)
             music.OnGameStart();
+
+        if (startSequence != null)
+            StopCoroutine(startSequence);
+        startSequence = StartCoroutine(StartSequence());
+    }
+
+    // "Prêt ?" puis reflet sur les lames (synchronisé avec le son), puis la partie démarre.
+    private IEnumerator StartSequence()
+    {
+        if (readyText != null)
+            readyText.SetActive(true);
+
+        yield return new WaitForSeconds(readyDuration);
+
+        if (shineSource != null && shineClip != null)
+            shineSource.PlayOneShot(shineClip);
+        if (bladeShines != null)
+            foreach (var shine in bladeShines)
+                if (shine != null)
+                    shine.Play(shineSweepDuration);
+
+        float shineTime = shineClip != null ? Mathf.Max(shineSweepDuration, shineClip.length * 0.8f) : shineSweepDuration;
+        yield return new WaitForSeconds(shineTime);
+
+        if (readyText != null)
+            readyText.SetActive(false);
+
+        if (spawner != null)
+            spawner.StartSpawning();
 
         if (timerCoroutine != null)
             StopCoroutine(timerCoroutine);
 
         timerCoroutine = StartCoroutine(GameTimer());
+        startSequence = null;
     }
 
     private IEnumerator GameTimer()

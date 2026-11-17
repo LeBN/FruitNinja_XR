@@ -1,0 +1,29 @@
+FRUITY NINJA VR - version PC VR (Windows)
+
+Ce qu'il faut pour jouer
+- Windows 10 ou 11, 64 bits, avec une carte graphique compatible VR.
+- Un casque VR relié au PC :
+    * Meta Quest : application Meta Quest Link, puis Quest Link (câble) ou Air Link (Wi-Fi) ;
+    * autres casques : SteamVR.
+- Le runtime OpenXR actif doit être celui de votre casque :
+    * Meta Quest Link : Paramètres > Général > Runtime OpenXR > « Définir Meta Quest Link comme actif » ;
+    * SteamVR : Paramètres > OpenXR > « Définir SteamVR comme runtime OpenXR ».
+- Environ 600 Mo d'espace disque.
+
+Lancer le jeu
+Connectez d'abord le casque (Link ou SteamVR), puis lancez « Fruity Ninja VR » depuis le menu Démarrer
+ou le bureau. L'image apparaît dans le casque.
+
+Contrôles
+- Menus : visez avec le rayon et appuyez sur la gâchette.
+- Jeu : coupez les fruits avec les deux sabres. Coupez la fraise, la pomme ou la bombe pour choisir la
+  difficulté, puis le fruit START. La banane RETOUR ramène au menu.
+- Joystick gauche : déplacement. Joystick droit : rotation (instantanée ou continue, dans Paramètres).
+- Le décor détaillé peut être désactivé dans Paramètres si le jeu n'est pas assez fluide.
+
+Projet étudiant (EFREI, I3 IRV, Mini projet VR Part 1) : https://github.com/LeBN/FruitNinja_XR
+
+Crédits principaux
+- Canon : « Stylized Canon » par Anggo Ari Wibowo, CC BY 4.0.
+- Interface en bois : Image de abusayem9024 sur Magnific.
+- Autres ressources : voir docs/09-assets-et-licences.md sur le dépôt GitHub.

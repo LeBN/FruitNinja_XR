@@ -11,6 +11,7 @@
 - [Les deux configurations](#les-deux-configurations)
 - [Générer les builds](#générer-les-builds)
 - [Build Windows PCVR](#build-windows-pcvr)
+- [Installeur Windows](#installeur-windows)
 - [Build Android pour Meta Quest](#build-android-pour-meta-quest)
 - [Installer l'APK sur le casque](#installer-lapk-sur-le-casque)
 - [Que contient l'APK ?](#que-contient-lapk-)
@@ -20,7 +21,7 @@
 
 ## Où télécharger les builds
 
-Chaque partie du mini projet a sa **release GitHub**, avec le ZIP du build Windows PCVR et l'APK Meta Quest en pièces jointes :
+Chaque partie du mini projet a sa **release GitHub**, avec l'**installeur Windows** (`FruityNinjaVR_Installeur_PartN.exe`), le ZIP du build Windows PCVR (sans installation) et l'APK Meta Quest en pièces jointes :
 [Part 1](https://github.com/LeBN/FruitNinja_XR/releases/tag/part1).
 
 ---
@@ -72,6 +73,39 @@ Le dossier de sortie est `Builds/` à côté du projet, ou celui de la variable 
 4. Lancer `FruityNinjaVR.exe` avec le casque connecté.
 
 À livrer : **le dossier complet** (l'`.exe` seul ne fonctionne pas sans `FruityNinjaVR_Data/` et les DLL). Le dossier `…_BurstDebugInformation_DoNotShip` n'est pas à livrer.
+
+---
+
+## Installeur Windows
+
+Plutôt qu'un ZIP à décompresser, la version PC est aussi livrée en **installeur** : un seul `.exe` (≈ 200 Mo, contre 280 Mo pour le ZIP) qui installe le jeu, crée les raccourcis et s'ajoute aux *Programmes installés* de Windows pour pouvoir le désinstaller proprement.
+
+Il est construit avec **[Inno Setup 6](https://jrsoftware.org/isinfo.php)** (gratuit, standard pour les jeux Windows), à partir du dossier `Installeur/` du dépôt :
+
+| Fichier | Rôle |
+|---|---|
+| `FruityNinjaVR.iss` | script de l'installeur : nom, version, dossier d'installation, fichiers, raccourcis, langues |
+| `AvantInstallation.txt` | page « Informations » affichée avant l'installation (prérequis VR, runtime OpenXR, contrôles, crédits), copiée aussi en `LISEZMOI.txt` |
+| `Images/` | icône (pastèque) et images de l'assistant (logo sur le ciel de nuit), en 100 / 150 / 200 % pour les écrans haute résolution |
+
+Ce que fait l'installeur :
+
+- installation **pour l'utilisateur, sans droits administrateur** (dans `%LOCALAPPDATA%\Programs\Fruity Ninja VR`), avec la possibilité de l'installer pour tous ; le dossier est modifiable ;
+- en **français** ou en anglais selon le choix au lancement ;
+- raccourcis dans le menu Démarrer (jeu, lisez-moi, désinstallation), raccourci sur le bureau en option ;
+- le dossier `…_DoNotShip` de Unity est **exclu** ;
+- un **identifiant fixe** (`AppId`) : l'installeur d'une partie suivante met à jour la même installation au lieu d'en créer une seconde.
+
+Pour le reconstruire après un nouveau build Windows :
+
+```powershell
+& "A:\Apps\InnoSetup6\ISCC.exe" Installeur\FruityNinjaVR.iss `
+  /DSource="A:\Builds\FruitNinjaVR\Windows_PCVR" /DVersion=1.0.0 /DPartie=Part1 `
+  /O"A:\Builds\FruitNinjaVR"
+```
+
+> [!NOTE]
+> La compression (LZMA2 *ultra*, solide) tourne dans un processus 64 bits séparé (`LZMAUseSeparateProcess=yes`) : sur un build de 600 Mo, le compilateur 32 bits d'Inno Setup manquait de mémoire (« Out of memory »).
 
 ---
 

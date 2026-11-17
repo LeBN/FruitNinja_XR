@@ -21,7 +21,7 @@
 > Le suivi exact des consignes du TP est dans [`docs/tp/rendu-part1.md`](docs/tp/rendu-part1.md).
 
 > [!TIP]
-> **Télécharger le jeu** : chaque partie du mini projet a sa release avec le build Windows PCVR (ZIP) et l'APK Meta Quest.
+> **Télécharger le jeu** : chaque partie du mini projet a sa release avec l'installeur Windows PCVR (ou le ZIP) et l'APK Meta Quest.
 > Part 1 : [releases/tag/part1](https://github.com/LeBN/FruitNinja_XR/releases/tag/part1)
 
 ---

@@ -48,7 +48,7 @@ Le dépôt est **public** : on n'y met que ce qu'on a le droit de redistribuer, 
 | Ressource | Source / licence | Utilisation |
 |---|---|---|
 | Logo « Fruity Ninja VR » | image générée par IA | menu, écran de démarrage |
-| UI en bois et or | « Collection d'éléments d'interface utilisateur de jeu en bois » : **vecteur Premium** [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm), licence Premium, **crédit de l'artiste obligatoire** (`UI/Bois/CREDITS.txt`) | boutons, planches, curseurs |
+| UI en bois et or | « Collection d'éléments d'interface utilisateur de jeu en bois » : **vecteur Premium** [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm), par **[abusayem9024](https://www.magnific.com/fr/auteur/abusayem9024)**, licence Premium, **crédit obligatoire** : « Image de abusayem9024 sur Magnific » (`UI/Bois/CREDITS.txt`) | boutons, planches, curseurs |
 | Lilita One | Google Fonts, **SIL Open Font License 1.1** (`Polices/LilitaOne_Licence_OFL.txt`) | tous les textes |
 | Émoji pastèque | **Noto Emoji** (Google) (`UI/Icone/NotoEmoji_Licence.txt`) | icône de l'application |
 
@@ -69,8 +69,6 @@ Le dépôt est **public** : on n'y met que ce qu'on a le droit de redistribuer, 
 | XR Interaction Toolkit, OpenXR, URP, Input System | Unity Companion License | paquets Unity |
 | Meta XR SDK | Oculus SDK License | fonctionnalités Quest |
 
-> [!WARNING]
-> **Crédit à compléter** : le nom de l'artiste de l'interface en bois (Magnific) doit être ajouté dans `UI/Bois/CREDITS.txt` et ici, comme l'exige la licence Premium (« En créditer l'artiste : Obligatoire »).
 
 ---
 

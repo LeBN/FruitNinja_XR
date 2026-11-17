@@ -20,6 +20,10 @@
 > Il reprend le Fruit Ninja VR du S7 et le rend **organisé, documenté et déployable sur deux plateformes**.
 > Le suivi exact des consignes du TP est dans [`docs/tp/rendu-part1.md`](docs/tp/rendu-part1.md).
 
+> [!TIP]
+> **Télécharger le jeu** : chaque partie du mini projet a sa release avec le build Windows PCVR (ZIP) et l'APK Meta Quest.
+> Part 1 : [releases/tag/part1](https://github.com/LeBN/FruitNinja_XR/releases/tag/part1)
+
 ---
 
 ## Sommaire
@@ -220,7 +224,7 @@ Les dossiers des packs tiers (Low Poly Fruits, Simple Nature Pack, sabre JTS, Ez
 
 - **Projet** : [LeBN](https://github.com/LeBN), EFREI (I3 IRV), à partir du Fruit Ninja VR du S7.
 - **Canon** : « [Stylized Canon](https://sketchfab.com/3d-models/stylized-canon-3f7b731c25d9456d98e28bf2612f818b) » par [Anggo Ari Wibowo](https://sketchfab.com/anggoariwibowo), licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (modifié).
-- **Interface en bois** : vecteur Premium [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm) (crédit de l'artiste obligatoire, voir [Assets et licences](docs/09-assets-et-licences.md)).
+- **Interface en bois** : vecteur Premium [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm) — Image de [abusayem9024](https://www.magnific.com/fr/auteur/abusayem9024) sur Magnific.
 - **Autres modèles, sons et décors** : packs listés dans [Assets et licences](docs/09-assets-et-licences.md).
 - **Police** : Lilita One (SIL Open Font License 1.1).
 - **Icône** : émoji pastèque de Noto Emoji (Google).

@@ -18,6 +18,13 @@
 
 ---
 
+## Où télécharger les builds
+
+Chaque partie du mini projet a sa **release GitHub**, avec le ZIP du build Windows PCVR et l'APK Meta Quest en pièces jointes :
+[Part 1](https://github.com/LeBN/FruitNinja_XR/releases/tag/part1).
+
+---
+
 ## Les deux configurations
 
 | | Windows PCVR | Meta Quest |

@@ -1457,7 +1457,7 @@ MonoBehaviour:
   forceRemoveInternetPermission: 0
   m_symmetricProjection: 0
   m_foveatedRenderingApi: 0
-  systemSplashScreen: {fileID: 0}
+  systemSplashScreen: {fileID: 2800000, guid: 6b5777ff3df523e41993c36a3ce4a36b, type: 3}
   m_optimizeBufferDiscards: 1
   lateLatchingMode: 0
   lateLatchingDebug: 0

@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         if (panneauParametres != null) panneauParametres.SetActive(false);
+        RetourMenu.DernierMenu = SceneManager.GetActiveScene().name;
     }
 
     public void Play()

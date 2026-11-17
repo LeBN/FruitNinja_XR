@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Sons d'effets en 3D : chaque son est joué depuis l'endroit où il se produit
@@ -19,7 +19,7 @@ public static class SonSpatial
         var source = go.AddComponent<AudioSource>();
         Configurer3D(source);
         source.clip = clip;
-        source.volume = volume;
+        source.volume = volume * Parametres.VolumeEffets;
         source.pitch = 1f + Random.Range(-variationPitch, variationPitch);
         source.Play();
         Object.Destroy(go, clip.length / source.pitch + 0.1f);

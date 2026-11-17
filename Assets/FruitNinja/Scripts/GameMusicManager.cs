@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -50,7 +50,7 @@ public class GameMusicManager : MonoBehaviour
             musicSource.Stop();
             musicSource.clip = battleMusic;
             musicSource.loop = true;
-            musicSource.volume = musicVolume;
+            musicSource.volume = musicVolume * Parametres.VolumeMusique;
             musicSource.PlayScheduled(startTime);
         }
     }
@@ -72,7 +72,7 @@ public class GameMusicManager : MonoBehaviour
             yield return null;
         }
         musicSource.Stop();
-        musicSource.volume = musicVolume;
+        musicSource.volume = musicVolume * Parametres.VolumeMusique;
         fadeRoutine = null;
     }
 }

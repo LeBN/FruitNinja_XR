@@ -20,9 +20,9 @@ RenderSettings:
   m_FogDensity: 0.012
   m_LinearFogStart: 6
   m_LinearFogEnd: 45
-  m_AmbientSkyColor: {r: 0.28, g: 0.4, b: 0.66, a: 1}
-  m_AmbientEquatorColor: {r: 0.18, g: 0.28, b: 0.5, a: 1}
-  m_AmbientGroundColor: {r: 0.07, g: 0.11, b: 0.21, a: 1}
+  m_AmbientSkyColor: {r: 0.33600003, g: 0.48000002, b: 0.79200006, a: 1.2}
+  m_AmbientEquatorColor: {r: 0.21600002, g: 0.33600003, b: 0.6, a: 1.2}
+  m_AmbientGroundColor: {r: 0.08400001, g: 0.132, b: 0.252, a: 1.2}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.09411766, g: 0.09411766, b: 0.09411766, a: 1}
@@ -899,6 +899,7 @@ MonoBehaviour:
   difficulty: 2
   phantom: {fileID: 1276097379}
   selector: {fileID: 1097232266}
+  etiquette: {fileID: 1815775236}
 --- !u!1001 &60363158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5064,6 +5065,7 @@ MonoBehaviour:
   fxLifetime: 3
   fruitCutSound: {fileID: 8300000, guid: d7fe7dd2685063b45ab36c4bc21bbf7f, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: 7ba3fcbb1d2c56f4397a05af89b76baf, type: 3}
+  fruitCutVolume: 0.45
   bombPenalty: 3
   bombHapticAmplitude: 0.9
   bombHapticDuration: 0.35
@@ -5128,11 +5130,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 650deaac860bf9542a47af361fed665a, type: 3}
   samplePointLocal: {x: -0.0003751032, y: 0.017942285, z: 0.57639325}
   edgeAxisLocal: {x: 0, y: 1, z: 0}
-  minSpeed: 1.6
-  fastSpeed: 4
-  minEdgeRatio: 0.6
+  minSpeed: 1.5
+  fastSpeed: 3
+  minEdgeRatio: 0.5
   cooldown: 0.3
-  decisionWindow: 0.06
+  decisionWindow: 0.1
   volume: 0.8
 --- !u!1001 &474469834
 PrefabInstance:
@@ -5299,6 +5301,7 @@ MonoBehaviour:
   fxLifetime: 3
   fruitCutSound: {fileID: 8300000, guid: d7fe7dd2685063b45ab36c4bc21bbf7f, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: 7ba3fcbb1d2c56f4397a05af89b76baf, type: 3}
+  fruitCutVolume: 0.45
   bombPenalty: 3
   bombHapticAmplitude: 0.9
   bombHapticDuration: 0.35
@@ -7450,7 +7453,7 @@ Transform:
   m_GameObject: {fileID: 697543021}
   serializedVersion: 2
   m_LocalRotation: {x: -0.12278782, y: -0.6963643, z: -0.6963643, w: 0.12278782}
-  m_LocalPosition: {x: -0.612, y: 1.5519998, z: -3.2749999}
+  m_LocalPosition: {x: -0.612, y: 1.5519998, z: -3.725}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9976,11 +9979,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 650deaac860bf9542a47af361fed665a, type: 3}
   samplePointLocal: {x: -0.0003751032, y: 0.017942285, z: 0.57639325}
   edgeAxisLocal: {x: 0, y: 1, z: 0}
-  minSpeed: 1.6
-  fastSpeed: 4
-  minEdgeRatio: 0.6
+  minSpeed: 1.5
+  fastSpeed: 3
+  minEdgeRatio: 0.5
   cooldown: 0.3
-  decisionWindow: 0.06
+  decisionWindow: 0.1
   volume: 0.8
 --- !u!114 &905525387
 MonoBehaviour:
@@ -12540,18 +12543,21 @@ MonoBehaviour:
   placement: {fileID: 252936138}
   settings:
   - difficulty: 0
+    duree: 90
     spawnInterval: 1.9
     bombChance: 0.08
     launchForce: 5.5
     minPerWave: 1
     maxPerWave: 2
   - difficulty: 1
+    duree: 60
     spawnInterval: 1.5
     bombChance: 0.15
     launchForce: 6
     minPerWave: 1
     maxPerWave: 3
   - difficulty: 2
+    duree: 45
     spawnInterval: 1
     bombChance: 0.25
     launchForce: 7
@@ -13192,7 +13198,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157974020}
   m_LocalRotation: {x: -0, y: -0.34356976, z: -0, w: 0.93912715}
-  m_LocalPosition: {x: 0, y: 0, z: -3.2749999}
+  m_LocalPosition: {x: 0, y: 0, z: -3.725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14729,7 +14735,7 @@ Transform:
   m_GameObject: {fileID: 1241366424}
   serializedVersion: 2
   m_LocalRotation: {x: -0.68112206, y: 0.18953425, z: 0.18946809, w: 0.68135995}
-  m_LocalPosition: {x: 1.1, y: 2.12, z: 2.12}
+  m_LocalPosition: {x: 1.35, y: 2.12, z: 1.6699998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15084,6 +15090,7 @@ MonoBehaviour:
   startFruitPrefab: {fileID: 843879479705570053, guid: 6d4eb3d6cc240b54c8ecea936e1b676f, type: 3}
   startFruitSpawnPoint: {fileID: 1241366425}
   startFruitBelowEyes: 0.35
+  shineHapticAmplitude: 0.5
   scoreText: {fileID: 1166234577}
   timerText: {fileID: 942150807}
   gameDuration: 10
@@ -25214,6 +25221,7 @@ MonoBehaviour:
   difficulty: 1
   phantom: {fileID: 1435519619}
   selector: {fileID: 1097232266}
+  etiquette: {fileID: 6544139}
 --- !u!1001 &648147160049788966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25980,6 +25988,7 @@ MonoBehaviour:
   difficulty: 0
   phantom: {fileID: 1356767583}
   selector: {fileID: 1097232266}
+  etiquette: {fileID: 5395624927118771920}
 --- !u!222 &9168595066387249381
 CanvasRenderer:
   m_ObjectHideFlags: 0

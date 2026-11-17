@@ -32,6 +32,7 @@ public class SwordSlicer : MonoBehaviour
     [Header("Sons")]
     public AudioClip fruitCutSound;
     public AudioClip bombExplosionSound;
+    [Range(0f, 1f)] public float fruitCutVolume = 0.45f;
 
     [Header("Pénalité bombe")]
     public int bombPenalty = 3;
@@ -96,7 +97,7 @@ public class SwordSlicer : MonoBehaviour
                 gm.StartGame();
 
             SpawnFx(JuiceFx, contactPoint, FruitColor(target));
-            PlaySound(fruitCutSound, contactPoint);
+            PlaySound(fruitCutSound, contactPoint, fruitCutVolume);
             Destroy(target);
             return;
         }
@@ -107,7 +108,7 @@ public class SwordSlicer : MonoBehaviour
             PlaySound(bombExplosionSound, contactPoint);
             SpawnFx(ExplosionFx, contactPoint, null);
             PenaltyPopup.Spawn(contactPoint + Vector3.up * 0.15f, "-" + bombPenalty, new Color(1f, 0.2f, 0.15f));
-            Haptics(bombHapticAmplitude, bombHapticDuration);
+            Vibrations.Envoyer(bombHapticAmplitude, bombHapticDuration);
 
             if (gm != null)
             {
@@ -168,7 +169,7 @@ public class SwordSlicer : MonoBehaviour
         AddPhysicsToSlice(upperHull, originalVelocity, originalAngularVelocity);
         AddPhysicsToSlice(lowerHull, originalVelocity, originalAngularVelocity);
 
-        PlaySound(fruitCutSound, contactPoint);
+        PlaySound(fruitCutSound, contactPoint, fruitCutVolume);
         SpawnFx(JuiceFx, contactPoint, FruitColor(target));
         return true;
     }
@@ -213,15 +214,6 @@ public class SwordSlicer : MonoBehaviour
         Destroy(fx, fxLifetime);
     }
 
-    private static void Haptics(float amplitude, float duration)
-    {
-        foreach (var node in new[] { UnityEngine.XR.XRNode.LeftHand, UnityEngine.XR.XRNode.RightHand })
-        {
-            var device = UnityEngine.XR.InputDevices.GetDeviceAtXRNode(node);
-            if (device.isValid) device.SendHapticImpulse(0u, amplitude, duration);
-        }
-    }
-
     private void AddPhysicsToSlice(GameObject slicedObject, Vector3 inheritedVelocity, Vector3 inheritedAngularVelocity)
     {
         if (slicedObject == null) return;
@@ -236,8 +228,8 @@ public class SwordSlicer : MonoBehaviour
         Destroy(slicedObject, 8f);
     }
 
-    private static void PlaySound(AudioClip clip, Vector3 position)
+    private static void PlaySound(AudioClip clip, Vector3 position, float volume = 1f)
     {
-        SonSpatial.Jouer(clip, position);
+        SonSpatial.Jouer(clip, position, volume);
     }
 }

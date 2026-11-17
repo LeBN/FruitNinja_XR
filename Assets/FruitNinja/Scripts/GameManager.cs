@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Transform startFruitSpawnPoint;
     [Tooltip("Le fruit de départ apparaît à cette distance sous les yeux du joueur (m), entre 0,9 et 1,6 m du sol.")]
     public float startFruitBelowEyes = 0.35f;
+    [Range(0f, 1f)] public float shineHapticAmplitude = 0.5f;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
 
@@ -153,6 +154,8 @@ public class GameManager : MonoBehaviour
             foreach (var shine in bladeShines)
                 if (shine != null)
                     shine.Play(shineSweepDuration);
+        // Vibration des deux manettes pendant le reflet
+        Vibrations.Envoyer(shineHapticAmplitude, shineSweepDuration);
 
         float shineTime = shineClip != null ? Mathf.Max(shineSweepDuration, shineClip.length * 0.8f) : shineSweepDuration;
         yield return new WaitForSeconds(shineTime);
@@ -280,6 +283,17 @@ public class GameManager : MonoBehaviour
         Debug.Log($"StartFruit respawné à {spawnPos}");
     }
 
+
+    /// <summary>Durée de la partie selon la difficulté choisie (mise à jour du chrono avant la partie).</summary>
+    public void SetGameDuration(float duration)
+    {
+        gameDuration = duration;
+        if (!gameStarted)
+        {
+            timeRemaining = duration;
+            UpdateTimerUI();
+        }
+    }
 
     public void AddScore(int amount)
     {

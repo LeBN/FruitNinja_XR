@@ -5,6 +5,8 @@ using UnityEngine;
 public class DifficultySettings
 {
     public Difficulty difficulty;
+    [Tooltip("Durée de la partie (s).")]
+    public float duree = 60f;
     [Tooltip("Intervalle moyen entre deux vagues (s).")]
     public float spawnInterval = 1.5f;
     [Range(0f, 1f)] public float bombChance = 0.15f;
@@ -30,9 +32,9 @@ public class DifficultySelector : MonoBehaviour
 
     public DifficultySettings[] settings =
     {
-        new DifficultySettings { difficulty = Difficulty.Facile, spawnInterval = 1.9f, bombChance = 0.08f, launchForce = 5.5f, minPerWave = 1, maxPerWave = 2 },
-        new DifficultySettings { difficulty = Difficulty.Normal, spawnInterval = 1.5f, bombChance = 0.15f, launchForce = 6f, minPerWave = 1, maxPerWave = 3 },
-        new DifficultySettings { difficulty = Difficulty.Hardcore, spawnInterval = 1.0f, bombChance = 0.25f, launchForce = 7f, minPerWave = 2, maxPerWave = 4 },
+        new DifficultySettings { difficulty = Difficulty.Facile, duree = 90f, spawnInterval = 1.9f, bombChance = 0.08f, launchForce = 5.5f, minPerWave = 1, maxPerWave = 2 },
+        new DifficultySettings { difficulty = Difficulty.Normal, duree = 60f, spawnInterval = 1.5f, bombChance = 0.15f, launchForce = 6f, minPerWave = 1, maxPerWave = 3 },
+        new DifficultySettings { difficulty = Difficulty.Hardcore, duree = 45f, spawnInterval = 1.0f, bombChance = 0.25f, launchForce = 7f, minPerWave = 2, maxPerWave = 4 },
     };
 
     public bool HasChoice { get; private set; }
@@ -74,9 +76,15 @@ public class DifficultySelector : MonoBehaviour
 
     private void Apply(Difficulty d)
     {
-        if (spawner == null) return;
         var s = Array.Find(settings, x => x.difficulty == d);
         if (s == null) return;
+
+        // Durée de la partie : affichée sous la difficulté choisie et sur le chrono
+        foreach (var f in fruits)
+            if (f != null) f.AfficherDuree(f.difficulty == d, s.duree);
+        if (gameManager != null) gameManager.SetGameDuration(s.duree);
+
+        if (spawner == null) return;
         spawner.spawnInterval = s.spawnInterval;
         spawner.bombSpawnChance = s.bombChance;
         spawner.launchForce = s.launchForce;

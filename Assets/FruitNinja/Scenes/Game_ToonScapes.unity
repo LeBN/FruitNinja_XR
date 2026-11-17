@@ -23733,7 +23733,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!1001 &1454006701
 PrefabInstance:
@@ -34368,13 +34368,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2906610013219655815, guid: babbb9de64a146543b01e04159d595c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 648147160049788969}
   m_SourcePrefab: {fileID: 100100000, guid: babbb9de64a146543b01e04159d595c3, type: 3}
 --- !u!4 &648147160049788967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5151401438448703361, guid: babbb9de64a146543b01e04159d595c3, type: 3}
   m_PrefabInstance: {fileID: 648147160049788966}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &648147160049788968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2906610013219655815, guid: babbb9de64a146543b01e04159d595c3, type: 3}
+  m_PrefabInstance: {fileID: 648147160049788966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &648147160049788969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648147160049788968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe3a072d512c7d478d8ad1a306a1110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomQuest
+  desactiverSurQuest: 1
 --- !u!33 &661941534801813462
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -5693,6 +5693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576285324}
   - component: {fileID: 576285325}
+  - component: {fileID: 576285326}
   m_Layer: 0
   m_Name: Audio_Stinger_Depart
   m_TagString: Untagged
@@ -5812,6 +5813,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &576285326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576285323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de849fec97879f48b6486a145dcf093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeMusique
 --- !u!1001 &580747508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15724,6 +15737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307002546}
   - component: {fileID: 1307002547}
+  - component: {fileID: 1307002548}
   m_Layer: 0
   m_Name: Audio_Ambiance_Nuit
   m_TagString: Untagged
@@ -15843,6 +15857,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1307002548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307002545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de849fec97879f48b6486a145dcf093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeMusique
 --- !u!1001 &1315877893
 PrefabInstance:
   m_ObjectHideFlags: 0

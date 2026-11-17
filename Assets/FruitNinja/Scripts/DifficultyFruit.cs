@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum Difficulty { Facile, Normal, Hardcore }
 
@@ -19,8 +19,9 @@ public class DifficultyFruit : MonoBehaviour
 
     private void Awake()
     {
-        homePosition = transform.position;
-        homeRotation = transform.rotation;
+        // Position locale : le menu entier peut monter/descendre selon la taille du joueur
+        homePosition = transform.localPosition;
+        homeRotation = transform.localRotation;
         body = GetComponent<Rigidbody>();
         if (selector == null) selector = FindFirstObjectByType<DifficultySelector>();
     }
@@ -40,7 +41,8 @@ public class DifficultyFruit : MonoBehaviour
     public void ShowFruit()
     {
         if (phantom != null) phantom.SetActive(false);
-        transform.SetPositionAndRotation(homePosition, homeRotation);
+        transform.localPosition = homePosition;
+        transform.localRotation = homeRotation;
         if (body != null && !body.isKinematic)
         {
             body.linearVelocity = Vector3.zero;

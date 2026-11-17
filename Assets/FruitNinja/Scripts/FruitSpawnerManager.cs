@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class FruitSpawnerManager : MonoBehaviour
@@ -61,12 +61,20 @@ public class FruitSpawnerManager : MonoBehaviour
 
         if (prefabToSpawn == null) return;
 
-        Vector3 spawnPos = spawner.position;
-        spawnPos.y += 0.5f;
+        // Le chariot du lanceur surgit, lance le fruit (son 3D) puis disparaît
+        LanceurChariot chariot = spawner.GetComponent<LanceurChariot>();
+        if (chariot != null)
+            chariot.Lancer(() => LaunchObject(prefabToSpawn, chariot.PointDeSortie));
+        else
+            LaunchObject(prefabToSpawn, spawner.position + Vector3.up * 0.5f);
+    }
 
+    private void LaunchObject(GameObject prefabToSpawn, Vector3 spawnPos)
+    {
+        if (!spawningActive) return;
         GameObject obj = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
 
-        // Auto-destruction apres 10 secondes
+        // Auto-destruction après 1,5 s
         Destroy(obj, 1.5f);
 
         Rigidbody rb = obj.GetComponent<Rigidbody>();
@@ -92,5 +100,10 @@ public class FruitSpawnerManager : MonoBehaviour
     {
         spawningActive = false;
         StopAllCoroutines();
+        foreach (var spawner in spawners)
+        {
+            var chariot = spawner != null ? spawner.GetComponent<LanceurChariot>() : null;
+            if (chariot != null) chariot.Cacher();
+        }
     }
 }

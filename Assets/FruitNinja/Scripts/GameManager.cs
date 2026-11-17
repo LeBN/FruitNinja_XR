@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public FruitSpawnerManager spawner;
     public GameObject startFruitPrefab;
     public Transform startFruitSpawnPoint;
+    [Tooltip("Le fruit de départ apparaît à cette distance sous les yeux du joueur (m), entre 0,9 et 1,6 m du sol.")]
+    public float startFruitBelowEyes = 0.35f;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
 
@@ -136,7 +138,16 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(readyDuration);
 
-        if (shineSource != null && shineClip != null)
+        // Son du reflet joué en 3D sur chaque lame (sinon sur la source de la scène)
+        bool sonSurLames = false;
+        if (shineClip != null && bladeShines != null)
+            foreach (var shine in bladeShines)
+                if (shine != null)
+                {
+                    SonSpatial.Jouer(shineClip, shine.transform.position, 0.8f, 0f);
+                    sonSurLames = true;
+                }
+        if (!sonSurLames && shineSource != null && shineClip != null)
             shineSource.PlayOneShot(shineClip);
         if (bladeShines != null)
             foreach (var shine in bladeShines)
@@ -256,6 +267,9 @@ public class GameManager : MonoBehaviour
         Vector3 spawnPos = startFruitSpawnPoint != null
             ? startFruitSpawnPoint.position
             : new Vector3(0, 1.2f, 0);
+
+        // Hauteur selon la taille du joueur : un peu sous les yeux (debout ou assis)
+        spawnPos.y = HauteurJoueur.Cible(startFruitBelowEyes, 0.9f, 1.6f, spawnPos.y);
 
         Quaternion spawnRot = startFruitSpawnPoint != null
     ? startFruitSpawnPoint.rotation

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using EzySlice;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +6,8 @@ using System.Collections.Generic;
 /// <summary>
 /// Découpe avec le sabre : un segment (startSlicePoint -> endSlicePoint) détecte les objets
 /// "Sliceable". Fruit -> coupé en deux + jus au point de contact ; bombe -> explosion + pénalité ;
-/// fruit de départ -> lance la partie ; fruit de difficulté -> sélection.
+/// fruit de départ -> lance la partie ; fruit de difficulté -> sélection ; fruit Retour -> menu principal.
+/// Les sons sont joués en 3D au point de contact (SonSpatial).
 /// Les effets ont une variante PCVR et une variante Quest (voir PlatformFx).
 /// </summary>
 public class SwordSlicer : MonoBehaviour
@@ -41,8 +42,6 @@ public class SwordSlicer : MonoBehaviour
     public string startButtonTag = "StartButton";
     public GameObject gameManager;
 
-    private AudioSource audioSource;
-
     // Liste des objets deja coupes recemment
     private HashSet<GameObject> recentlySliced = new HashSet<GameObject>();
     private float sliceCooldown = 0.15f; // 150 ms d'intervalle de securite
@@ -52,8 +51,6 @@ public class SwordSlicer : MonoBehaviour
 
     private void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
-
         if (gameManager == null)
         {
             GameManager gmSearch = FindFirstObjectByType<GameManager>();
@@ -99,7 +96,7 @@ public class SwordSlicer : MonoBehaviour
                 gm.StartGame();
 
             SpawnFx(JuiceFx, contactPoint, FruitColor(target));
-            PlaySound(fruitCutSound);
+            PlaySound(fruitCutSound, contactPoint);
             Destroy(target);
             return;
         }
@@ -107,7 +104,7 @@ public class SwordSlicer : MonoBehaviour
         // Bombe : explosion au point de contact + pénalité (score, texte, vibration)
         if (target.CompareTag(bombTag))
         {
-            PlaySound(bombExplosionSound);
+            PlaySound(bombExplosionSound, contactPoint);
             SpawnFx(ExplosionFx, contactPoint, null);
             PenaltyPopup.Spawn(contactPoint + Vector3.up * 0.15f, "-" + bombPenalty, new Color(1f, 0.2f, 0.15f));
             Haptics(bombHapticAmplitude, bombHapticDuration);
@@ -131,6 +128,15 @@ public class SwordSlicer : MonoBehaviour
             return;
         }
 
+        // Fruit Retour : coupé (sans score), puis retour au menu principal
+        FruitRetour retour = target.GetComponentInParent<FruitRetour>();
+        if (retour != null)
+        {
+            SliceIntoPieces(target, contactPoint);
+            retour.OnSliced();
+            return;
+        }
+
         // Fruit normal
         if (!SliceIntoPieces(target, contactPoint)) return;
 
@@ -150,6 +156,11 @@ public class SwordSlicer : MonoBehaviour
         GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
         GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
 
+        // EzySlice recopie la position LOCALE du fruit sur des objets créés à la racine de la scène :
+        // pour un fruit rangé dans un parent (menu de difficulté), les morceaux apparaissaient ailleurs.
+        PlaceLikeOriginal(upperHull, target.transform);
+        PlaceLikeOriginal(lowerHull, target.transform);
+
         Rigidbody originalRb = target.GetComponent<Rigidbody>();
         Vector3 originalVelocity = originalRb ? originalRb.linearVelocity : Vector3.zero;
         Vector3 originalAngularVelocity = originalRb ? originalRb.angularVelocity : Vector3.zero;
@@ -157,9 +168,17 @@ public class SwordSlicer : MonoBehaviour
         AddPhysicsToSlice(upperHull, originalVelocity, originalAngularVelocity);
         AddPhysicsToSlice(lowerHull, originalVelocity, originalAngularVelocity);
 
-        PlaySound(fruitCutSound);
+        PlaySound(fruitCutSound, contactPoint);
         SpawnFx(JuiceFx, contactPoint, FruitColor(target));
         return true;
+    }
+
+    private static void PlaceLikeOriginal(GameObject piece, Transform original)
+    {
+        if (piece == null) return;
+        piece.transform.SetParent(null);
+        piece.transform.SetPositionAndRotation(original.position, original.rotation);
+        piece.transform.localScale = original.lossyScale;
     }
 
     private static Color? FruitColor(GameObject target)
@@ -217,9 +236,8 @@ public class SwordSlicer : MonoBehaviour
         Destroy(slicedObject, 8f);
     }
 
-    private void PlaySound(AudioClip clip)
+    private static void PlaySound(AudioClip clip, Vector3 position)
     {
-        if (clip != null && audioSource != null)
-            audioSource.PlayOneShot(clip);
+        SonSpatial.Jouer(clip, position);
     }
 }

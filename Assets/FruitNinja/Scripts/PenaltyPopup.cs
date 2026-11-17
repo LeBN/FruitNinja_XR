@@ -24,6 +24,9 @@ public class PenaltyPopup : MonoBehaviour
         tmp.fontStyle = FontStyles.Bold;
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.color = color;
+        // Contour brun comme les autres textes (police Lilita One par défaut, voir TMP Settings)
+        tmp.outlineWidth = 0.2f;
+        tmp.outlineColor = new Color32(61, 20, 13, 255);
         tmp.rectTransform.sizeDelta = new Vector2(1f, 0.5f);
         var popup = go.AddComponent<PenaltyPopup>();
         popup.text = tmp;

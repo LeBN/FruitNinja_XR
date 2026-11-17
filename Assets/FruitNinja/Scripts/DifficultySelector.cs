@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 [Serializable]
@@ -23,6 +23,10 @@ public class DifficultySelector : MonoBehaviour
     public DifficultyFruit[] fruits;
     public GameManager gameManager;
     public FruitSpawnerManager spawner;
+    [Tooltip("Fruit Retour (menu principal), masqué pendant la partie.")]
+    public FruitRetour retour;
+    [Tooltip("Place le menu à hauteur de sabre selon la taille du joueur.")]
+    public PlacementSelonJoueur placement;
 
     public DifficultySettings[] settings =
     {
@@ -57,6 +61,8 @@ public class DifficultySelector : MonoBehaviour
     /// <summary>Masque le menu de difficulté pendant la partie, le réaffiche ensuite.</summary>
     public void SetMenuVisible(bool visible)
     {
+        if (visible && placement != null) placement.Ajuster();
+        if (retour != null) retour.SetVisible(visible);
         foreach (var f in fruits)
         {
             if (f == null) continue;

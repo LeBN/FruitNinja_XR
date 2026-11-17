@@ -941,6 +941,8 @@ MonoBehaviour:
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_StartingTargetFilter: {fileID: 0}
+  m_AutoFindParentInteractableInHierarchy: 0
+  m_ParentInteractableObject: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -1956,6 +1958,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &4205728969625760917
 MeshCollider:
@@ -1998,9 +2001,16 @@ MonoBehaviour:
     m_Bits: 64
   crossSectionMaterial: {fileID: 2100000, guid: 02ab3641d0db68945b8868c1d4021c6f, type: 2}
   cutForce: 2000
-  explosionVFX: {fileID: 0}
+  explosionVFX: {fileID: 9214607670339961642, guid: 1b8f41cf7532e3740a771386b96240ba, type: 3}
+  explosionVFXQuest: {fileID: 2140648402908353288, guid: e654f9c51b4140140bec88bb7f203e58, type: 3}
+  fruitJuiceFXPrefab: {fileID: 169570099797509240, guid: ff675f888dbd89e44a3f88dfdda2a5b6, type: 3}
+  fruitJuiceFXPrefabQuest: {fileID: 7145507426284223939, guid: ad50d161bebe5e6438da1dbdc6ec767c, type: 3}
+  fxLifetime: 3
   fruitCutSound: {fileID: 0}
   bombExplosionSound: {fileID: 0}
+  bombPenalty: 3
+  bombHapticAmplitude: 0.9
+  bombHapticDuration: 0.35
   bombTag: Bomb
   startButtonTag: StartButton
   gameManager: {fileID: 0}

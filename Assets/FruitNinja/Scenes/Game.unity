@@ -4807,10 +4807,16 @@ MonoBehaviour:
     m_Bits: 64
   crossSectionMaterial: {fileID: 2100000, guid: 02ab3641d0db68945b8868c1d4021c6f, type: 2}
   cutForce: 2000
-  explosionVFX: {fileID: 180856722141813692, guid: ad7357b4c96fc6c49bf0def79b8d527a, type: 3}
+  explosionVFX: {fileID: 9214607670339961642, guid: 1b8f41cf7532e3740a771386b96240ba, type: 3}
+  explosionVFXQuest: {fileID: 2140648402908353288, guid: e654f9c51b4140140bec88bb7f203e58, type: 3}
+  fruitJuiceFXPrefab: {fileID: 169570099797509240, guid: ff675f888dbd89e44a3f88dfdda2a5b6, type: 3}
+  fruitJuiceFXPrefabQuest: {fileID: 7145507426284223939, guid: ad50d161bebe5e6438da1dbdc6ec767c, type: 3}
+  fxLifetime: 3
   fruitCutSound: {fileID: 8300000, guid: d7fe7dd2685063b45ab36c4bc21bbf7f, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: 7ba3fcbb1d2c56f4397a05af89b76baf, type: 3}
-  fruitJuiceFXPrefab: {fileID: 974399103815838344, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
+  bombPenalty: 3
+  bombHapticAmplitude: 0.9
+  bombHapticDuration: 0.35
   bombTag: Bomb
   startButtonTag: StartButton
   gameManager: {fileID: 1268131890}
@@ -5004,10 +5010,16 @@ MonoBehaviour:
     m_Bits: 64
   crossSectionMaterial: {fileID: 2100000, guid: 02ab3641d0db68945b8868c1d4021c6f, type: 2}
   cutForce: 2000
-  explosionVFX: {fileID: 180856722141813692, guid: ad7357b4c96fc6c49bf0def79b8d527a, type: 3}
+  explosionVFX: {fileID: 9214607670339961642, guid: 1b8f41cf7532e3740a771386b96240ba, type: 3}
+  explosionVFXQuest: {fileID: 2140648402908353288, guid: e654f9c51b4140140bec88bb7f203e58, type: 3}
+  fruitJuiceFXPrefab: {fileID: 169570099797509240, guid: ff675f888dbd89e44a3f88dfdda2a5b6, type: 3}
+  fruitJuiceFXPrefabQuest: {fileID: 7145507426284223939, guid: ad50d161bebe5e6438da1dbdc6ec767c, type: 3}
+  fxLifetime: 3
   fruitCutSound: {fileID: 8300000, guid: d7fe7dd2685063b45ab36c4bc21bbf7f, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: 7ba3fcbb1d2c56f4397a05af89b76baf, type: 3}
-  fruitJuiceFXPrefab: {fileID: 974399103815838344, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
+  bombPenalty: 3
+  bombHapticAmplitude: 0.9
+  bombHapticDuration: 0.35
   bombTag: Bomb
   startButtonTag: StartButton
   gameManager: {fileID: 1268131890}
@@ -7457,7 +7469,6 @@ Transform:
   m_Children:
   - {fileID: 2893627767027180988}
   - {fileID: 648147160049788967}
-  - {fileID: 2718873835246172222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &761373185
@@ -12197,6 +12208,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 880970725214738984, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096517541735811467, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
+      propertyPath: m_Size
+      value: 4.9843683
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096517541735811467, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
+      propertyPath: m_LocalReferencePoint.x
+      value: 0.09733796
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096517541735811467, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
+      propertyPath: m_LocalReferencePoint.y
+      value: 2.4929867
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096517541735811467, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
+      propertyPath: m_LocalReferencePoint.z
+      value: -0.10189319
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096517541735811467, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6941765000743290380, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
@@ -23976,68 +24007,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &2718873835246172221
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 758745883}
-    m_Modifications:
-    - target: {fileID: 974399103815838344, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_Name
-      value: FX_Fruit_JusDecoupe_Modele
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.49801
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.75957
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.35561
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
---- !u!4 &2718873835246172222 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
-  m_PrefabInstance: {fileID: 2718873835246172221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2893627767027180987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24178,10 +24147,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1268131890}
-    - target: {fileID: 1266242484374422298, guid: 7ed7f1fd02b461a4b921fbcf4b2f37ee, type: 3}
-      propertyPath: explosionVFX
-      value: 
-      objectReference: {fileID: 180856722141813692, guid: ad7357b4c96fc6c49bf0def79b8d527a, type: 3}
     - target: {fileID: 1266242484374422298, guid: 7ed7f1fd02b461a4b921fbcf4b2f37ee, type: 3}
       propertyPath: fruitCutSound
       value: 

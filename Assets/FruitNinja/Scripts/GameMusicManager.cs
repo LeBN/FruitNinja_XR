@@ -20,6 +20,8 @@ public class GameMusicManager : MonoBehaviour
 
     [Header("Réglages")]
     [Range(0f, 1f)] public float musicVolume = 0.45f;
+    [Tooltip("La musique de combat démarre ce nombre de secondes avant la fin du stinger.")]
+    public float battleMusicLead = 2f;
     public float fadeOutDuration = 1.5f;
 
     private Coroutine fadeRoutine;
@@ -39,7 +41,8 @@ public class GameMusicManager : MonoBehaviour
             stingerSource.clip = startStinger;
             stingerSource.loop = false;
             stingerSource.PlayScheduled(startTime);
-            startTime += (double)startStinger.samples / startStinger.frequency;
+            double stingerLength = (double)startStinger.samples / startStinger.frequency;
+            startTime += System.Math.Max(0.0, stingerLength - battleMusicLead);
         }
 
         if (musicSource != null && battleMusic != null)

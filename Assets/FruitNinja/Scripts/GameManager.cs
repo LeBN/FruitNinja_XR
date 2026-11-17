@@ -41,6 +41,20 @@ public class GameManager : MonoBehaviour
 
     private Coroutine startSequence;
 
+    [Header("Difficulté")]
+    [Tooltip("Le fruit de départ n'apparaît qu'après le choix d'une difficulté.")]
+    public DifficultySelector difficultySelector;
+
+    private bool difficultyChosen;
+
+    /// <summary>Appelé par DifficultySelector quand un fruit de difficulté est coupé.</summary>
+    public void OnDifficultyChosen(bool firstChoice)
+    {
+        difficultyChosen = true;
+        if (firstChoice || GameObject.FindWithTag("StartButton") == null)
+            RespawnStartFruit();
+    }
+
 
     private void Start()
     {
@@ -61,6 +75,12 @@ public class GameManager : MonoBehaviour
         if (music == null)
             music = FindFirstObjectByType<GameMusicManager>();
 
+        if (difficultySelector == null)
+            difficultySelector = FindFirstObjectByType<DifficultySelector>();
+        // Sans sélecteur de difficulté (ancienne scène), on garde le comportement d'origine.
+        if (difficultySelector == null)
+            difficultyChosen = true;
+
         UpdateScoreUI();
         UpdateTimerUI();
         UpdateHighScoreUI();
@@ -69,6 +89,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // Pas de fruit de départ tant qu'aucune difficulté n'est choisie, ni pendant la partie
+        if (!difficultyChosen || gameStarted) return;
+
         if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
         {
             Debug.Log("Touche R pressée - Respawn StartFruit");
@@ -85,8 +108,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        if (gameStarted) return;
+        if (gameStarted || !difficultyChosen) return;
         gameStarted = true;
+
+        if (difficultySelector != null)
+            difficultySelector.SetMenuVisible(false);
 
         score = 0;
         UpdateScoreUI();
@@ -168,6 +194,10 @@ public class GameManager : MonoBehaviour
             if (rb.CompareTag("Sliceable") || rb.CompareTag("Bomb"))
                 Destroy(rb.gameObject);
         }
+
+        // Le menu de difficulté réapparaît pour pouvoir changer avant la prochaine partie
+        if (difficultySelector != null)
+            difficultySelector.SetMenuVisible(true);
 
         RespawnStartFruit();
 

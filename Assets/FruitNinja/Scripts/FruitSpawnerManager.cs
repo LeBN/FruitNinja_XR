@@ -18,6 +18,9 @@ public class FruitSpawnerManager : MonoBehaviour
     public float spawnInterval = 1.5f;
     public float launchForce = 4f;
     public float minRandomDelay = 0.3f;
+    [Tooltip("Nombre d'objets lanc√©s par vague (r√©gl√© par la difficult√©).")]
+    public int minObjectsPerWave = 1;
+    public int maxObjectsPerWave = 3;
 
     private bool spawningActive = false;
 
@@ -27,12 +30,12 @@ public class FruitSpawnerManager : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnInterval + Random.Range(-minRandomDelay, minRandomDelay));
 
-            // Choisit combien díobjets spawnent cette fois (1 ‡ 3)
-            int objectsToSpawn = Random.Range(1, 4); // 1, 2 ou 3
+            // Choisit combien d‚Äôobjets spawnent cette fois (selon la difficult√©)
+            int objectsToSpawn = Random.Range(minObjectsPerWave, Mathf.Max(minObjectsPerWave, maxObjectsPerWave) + 1);
             for (int i = 0; i < objectsToSpawn; i++)
             {
                 SpawnRandomObject();
-                yield return new WaitForSeconds(0.2f); // petit dÈlai entre les spawns díun mÍme groupe
+                yield return new WaitForSeconds(0.2f); // petit d√©lai entre les spawns d‚Äôun m√™me groupe
             }
         }
     }
@@ -47,15 +50,12 @@ public class FruitSpawnerManager : MonoBehaviour
         float goldenChance = 0.10f;
 
 
-        // Chance de bombe
-        if (bombPrefab != null && Random.value < bombSpawnChance)
-            prefabToSpawn = bombPrefab;
-        // Chance de spawn díun fruit dorÈ (ex : 10%)
-        if (Random.value < goldenChance && goldenFruitPrefab != null)
-        {
+        // Fruit dor√© (10 %), sinon bombe (selon la difficult√©), sinon fruit normal.
+        // (Avant, le "else if" √©crasait la bombe par un fruit : les bombes n'apparaissaient presque jamais.)
+        if (goldenFruitPrefab != null && Random.value < goldenChance)
             prefabToSpawn = goldenFruitPrefab;
-        }
-
+        else if (bombPrefab != null && Random.value < bombSpawnChance)
+            prefabToSpawn = bombPrefab;
         else if (fruitPrefabs.Length > 0)
             prefabToSpawn = fruitPrefabs[Random.Range(0, fruitPrefabs.Length)];
 

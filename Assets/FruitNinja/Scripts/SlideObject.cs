@@ -69,7 +69,7 @@ public class SlideObject : MonoBehaviour
 
         GameManager gm = gameManager != null ? gameManager.GetComponent<GameManager>() : null;
 
-        // Fruit de d�marrage
+        // Fruit de démarrage
         if (target.CompareTag(startButtonTag))
         {
             if (gm != null)
@@ -101,9 +101,30 @@ public class SlideObject : MonoBehaviour
             return;
         }
 
+        // Fruit de sélection de difficulté : coupé comme un fruit (sans score), puis sélection
+        DifficultyFruit difficultyFruit = target.GetComponentInParent<DifficultyFruit>();
+        if (difficultyFruit != null)
+        {
+            SliceIntoPieces(target);
+            difficultyFruit.OnSliced();
+            return;
+        }
+
         // Fruit normal
+        if (!SliceIntoPieces(target)) return;
+
+        if (gm != null)
+            gm.AddScore(1);
+
+        Destroy(target);
+    }
+
+    // Coupe l'objet en deux moitiés physiques, joue le son et l'effet de jus.
+    // Ne détruit pas l'objet d'origine.
+    private bool SliceIntoPieces(GameObject target)
+    {
         SlicedHull hull = target.Slice(target.transform.position, Vector3.up, crossSectionMaterial);
-        if (hull == null) return;
+        if (hull == null) return false;
 
         GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
         GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
@@ -138,11 +159,7 @@ public class SlideObject : MonoBehaviour
             Destroy(fx, 2f);
         }
 
-
-        if (gm != null)
-            gm.AddScore(1);
-
-        Destroy(target);
+        return true;
     }
 
 

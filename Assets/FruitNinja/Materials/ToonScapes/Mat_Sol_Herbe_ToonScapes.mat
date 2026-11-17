@@ -12,7 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ENVIRONMENTREFLECTIONS_OFF
+  - _ENABLESPECULARHIGHLIGHTS_ON
   m_InvalidKeywords:
   - _COVERAGEON_ON
   - _EMISSION
@@ -141,8 +141,8 @@ Material:
     - _EnableRimLighting: 0
     - _EnableRimLighting1: 0
     - _EnableSecondaryHighlights: 1
-    - _EnableSpecularHighlights: 0
-    - _EnvironmentReflections: 0
+    - _EnableSpecularHighlights: 1
+    - _EnvironmentReflections: 1
     - _FlickerFrequency: 1
     - _FlickerScale: 1
     - _GlossMapScale: 1
@@ -151,13 +151,13 @@ Material:
     - _IndirectSpecularContribution: 0.8
     - _MainNormalMapScale: 0.72
     - _MainNormalScale: 1
-    - _MainTextureTiling: 0.6
+    - _MainTextureTiling: 1
     - _MaxIntensity: 1
     - _Metallic: 0
     - _MinIntensity: 0.75
     - _Mode: 0
     - _NormalMapInfluence: 0
-    - _NormalScale: -1
+    - _NormalScale: 1
     - _Occlusion: 1
     - _OcclusionIntensity: 0.33
     - _OcclusionStrength: 1
@@ -180,13 +180,13 @@ Material:
     - _ScreenSpaceReflections: 1
     - _ScreenSpaceReflectionsContributeTransparent: 1
     - _SecondarySmoothness: 0.5
-    - _SecondarySpecularIntensity: 0
+    - _SecondarySpecularIntensity: 0.25
     - _SecondarySpecularSize: 0.25
-    - _Smoothness: 0
+    - _Smoothness: 0.25
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularInfluence: 0
-    - _SpecularIntensity: 0
+    - _SpecularIntensity: 0.5
     - _SpecularOcclusion: 1
     - _SpecularSize: 0.5
     - _SpecularSmoothness: 0.2

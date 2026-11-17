@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ENABLESPECULARHIGHLIGHTS_ON
+  - _ENVIRONMENTREFLECTIONS_OFF
   m_InvalidKeywords:
   - _COVERAGEON_ON
   - _EMISSION
@@ -142,7 +143,7 @@ Material:
     - _EnableRimLighting1: 0
     - _EnableSecondaryHighlights: 1
     - _EnableSpecularHighlights: 1
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _FlickerFrequency: 1
     - _FlickerScale: 1
     - _GlossMapScale: 1
@@ -180,13 +181,13 @@ Material:
     - _ScreenSpaceReflections: 1
     - _ScreenSpaceReflectionsContributeTransparent: 1
     - _SecondarySmoothness: 0.5
-    - _SecondarySpecularIntensity: 0.25
+    - _SecondarySpecularIntensity: 0
     - _SecondarySpecularSize: 0.25
-    - _Smoothness: 0.25
+    - _Smoothness: 0.05
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularInfluence: 0
-    - _SpecularIntensity: 0.5
+    - _SpecularIntensity: 0.1
     - _SpecularOcclusion: 1
     - _SpecularSize: 0.5
     - _SpecularSmoothness: 0.2

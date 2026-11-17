@@ -60,14 +60,14 @@ public class GameManager : MonoBehaviour
     {
         if (startFruitPrefab == null)
         {
-            startFruitPrefab = Resources.Load<GameObject>("StartFruit");
+            startFruitPrefab = Resources.Load<GameObject>("Fruit_Demarrage");
             if (startFruitPrefab == null)
-                Debug.LogWarning("Impossible de trouver StartFruit dans Resources.");
+                Debug.LogWarning("Impossible de trouver Fruit_Demarrage dans Resources.");
         }
 
         if (startFruitSpawnPoint == null)
         {
-            GameObject found = GameObject.Find("StartFruit") ?? GameObject.Find("StartFruitSpawn");
+            GameObject found = GameObject.Find("PointApparition_FruitDemarrage");
             if (found != null)
                 startFruitSpawnPoint = found.transform;
         }
@@ -227,7 +227,7 @@ public class GameManager : MonoBehaviour
         if (startFruitSpawnPoint == null)
         {
             // Essaie de le retrouver dans la scène
-            GameObject foundSpawn = GameObject.Find("StartFruitSpawnPoint");
+            GameObject foundSpawn = GameObject.Find("PointApparition_FruitDemarrage");
             if (foundSpawn != null)
             {
                 startFruitSpawnPoint = foundSpawn.transform;
@@ -243,7 +243,7 @@ public class GameManager : MonoBehaviour
         if (startFruitPrefab == null)
         {
             Debug.LogWarning("StartFruitPrefab manquant, tentative de chargement depuis Resources...");
-            startFruitPrefab = Resources.Load<GameObject>("StartFruit");
+            startFruitPrefab = Resources.Load<GameObject>("Fruit_Demarrage");
 
             if (startFruitPrefab == null)
             {

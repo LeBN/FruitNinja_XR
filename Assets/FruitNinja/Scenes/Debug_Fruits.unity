@@ -641,7 +641,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 38972d9a807375f4fbdbf2e076aa183f, type: 3}
       propertyPath: m_Name
-      value: BombBall_Affichage
+      value: Bombe_Affichage_Debug
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 38972d9a807375f4fbdbf2e076aa183f, type: 3}
       propertyPath: m_Layer
@@ -1026,7 +1026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594617280}
   m_Layer: 0
-  m_Name: -Fruits_Affichage-
+  m_Name: -Fruits_Affichage_Debug-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1365,7 +1365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 910099080}
   m_Layer: 0
-  m_Name: -Fruits-
+  m_Name: -Anciens_Modeles_Spawner-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

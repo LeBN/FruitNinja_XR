@@ -25,7 +25,7 @@ public class DifficultyFruit : MonoBehaviour
         if (selector == null) selector = FindFirstObjectByType<DifficultySelector>();
     }
 
-    /// <summary>Appelé par SlideObject quand la lame coupe ce fruit.</summary>
+    /// <summary>Appelé par SwordSlicer quand la lame coupe ce fruit.</summary>
     public void OnSliced()
     {
         if (selector != null) selector.Select(this);

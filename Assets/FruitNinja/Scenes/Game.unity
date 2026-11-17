@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.03, g: 0.035, b: 0.07, a: 1}
-  m_FogMode: 3
+  m_FogColor: {r: 0.055, g: 0.085, b: 0.175, a: 1}
+  m_FogMode: 1
   m_FogDensity: 0.012
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogStart: 6
+  m_LinearFogEnd: 45
   m_AmbientSkyColor: {r: 0.13, g: 0.15, b: 0.26, a: 1}
   m_AmbientEquatorColor: {r: 0.085, g: 0.095, b: 0.17, a: 1}
   m_AmbientGroundColor: {r: 0.035, g: 0.04, b: 0.065, a: 1}
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6053380}
   m_Layer: 0
-  m_Name: -Decor-
+  m_Name: -Decor_Nature-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 6544142}
   - component: {fileID: 6544141}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Etiquette_Facile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 10061556}
   - component: {fileID: 10061555}
   m_Layer: 5
-  m_Name: ReadyText
+  m_Name: PretText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 50696462}
   - component: {fileID: 50696466}
   m_Layer: 6
-  m_Name: Hardcore
+  m_Name: FruitDifficulte_Hardcore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1205,7 +1205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132839926}
   m_Layer: 0
-  m_Name: Spawner (4)
+  m_Name: Lanceur_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2428,7 +2428,7 @@ GameObject:
   - component: {fileID: 234460062}
   - component: {fileID: 234460061}
   m_Layer: 5
-  m_Name: UI_Canva
+  m_Name: Canvas_HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2675,7 +2675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 252936137}
   m_Layer: 0
-  m_Name: GameModeMenu
+  m_Name: MenuDifficulte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3463,7 +3463,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 119052, guid: 230ab468e3a7fec46928597d3efef833, type: 3}
       propertyPath: m_Name
-      value: Nodachi
+      value: Sabre_Gauche
       objectReference: {fileID: 0}
     - target: {fileID: 410236, guid: 230ab468e3a7fec46928597d3efef833, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3555,7 +3555,7 @@ GameObject:
   - component: {fileID: 355905682}
   - component: {fileID: 355905681}
   m_Layer: 5
-  m_Name: HighScore
+  m_Name: HighScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4954,7 +4954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 492741913}
   m_Layer: 0
-  m_Name: Spawner (1)
+  m_Name: Lanceur_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5044,7 +5044,7 @@ GameObject:
   - component: {fileID: 507892664}
   - component: {fileID: 507892663}
   m_Layer: 0
-  m_Name: GameMusicManager
+  m_Name: Audio_GameMusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5463,7 +5463,7 @@ GameObject:
   - component: {fileID: 576285324}
   - component: {fileID: 576285325}
   m_Layer: 0
-  m_Name: Stinger_Start
+  m_Name: Audio_Stinger_Depart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8700,7 +8700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 846529058}
   m_Layer: 0
-  m_Name: Spawner (2)
+  m_Name: Lanceur_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9319,7 +9319,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 119052, guid: 230ab468e3a7fec46928597d3efef833, type: 3}
       propertyPath: m_Name
-      value: Nodachi
+      value: Sabre_Droit
       objectReference: {fileID: 0}
     - target: {fileID: 119052, guid: 230ab468e3a7fec46928597d3efef833, type: 3}
       propertyPath: m_TagString
@@ -10947,7 +10947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1013722797}
   m_Layer: 0
-  m_Name: Spawner (8)
+  m_Name: Lanceur_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12368,7 +12368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134013817}
   m_Layer: 0
-  m_Name: Spawner (3)
+  m_Name: Lanceur_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13071,7 +13071,7 @@ GameObject:
   - component: {fileID: 1206519730}
   - component: {fileID: 1206519729}
   m_Layer: 0
-  m_Name: SFX_Shine
+  m_Name: Audio_Sabre_Reflet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13199,7 +13199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1209107742}
   m_Layer: 0
-  m_Name: Spawner (7)
+  m_Name: Lanceur_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13802,7 +13802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1241366425}
   m_Layer: 0
-  m_Name: 'StartFruitSpawnPoint '
+  m_Name: PointApparition_FruitDemarrage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14368,7 +14368,7 @@ GameObject:
   - component: {fileID: 1276097381}
   - component: {fileID: 1276097380}
   m_Layer: 0
-  m_Name: Hardcore_Fantome
+  m_Name: FruitDifficulte_Hardcore_Fantome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14605,7 +14605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294713368}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: Lanceur_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14773,7 +14773,7 @@ GameObject:
   - component: {fileID: 1307002546}
   - component: {fileID: 1307002547}
   m_Layer: 0
-  m_Name: Ambiance_Nuit
+  m_Name: Audio_Ambiance_Nuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15409,7 +15409,7 @@ GameObject:
   - component: {fileID: 1356767586}
   - component: {fileID: 1356767585}
   m_Layer: 0
-  m_Name: Facile_Fantome
+  m_Name: FruitDifficulte_Facile_Fantome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16485,7 +16485,7 @@ GameObject:
   - component: {fileID: 1435519622}
   - component: {fileID: 1435519621}
   m_Layer: 0
-  m_Name: Normal_Fantome
+  m_Name: FruitDifficulte_Normal_Fantome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16652,7 +16652,7 @@ GameObject:
   - component: {fileID: 1441023364}
   - component: {fileID: 1441023363}
   m_Layer: 0
-  m_Name: Musique_Combat
+  m_Name: Audio_Musique_Combat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17520,7 +17520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1513010515}
   m_Layer: 0
-  m_Name: Spawner (5)
+  m_Name: Lanceur_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20321,7 +20321,7 @@ GameObject:
   - component: {fileID: 1815775239}
   - component: {fileID: 1815775238}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Etiquette_Facile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20643,7 +20643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1848196502}
   m_Layer: 0
-  m_Name: -Spawners-
+  m_Name: -Lanceurs_Fruits-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21136,7 +21136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1878248480}
   m_Layer: 0
-  m_Name: Spawner (6)
+  m_Name: Lanceur_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23391,7 +23391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118743104}
   m_Layer: 0
-  m_Name: Spawner (9)
+  m_Name: Lanceur_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23750,7 +23750,7 @@ GameObject:
   - component: {fileID: 1969380964}
   - component: {fileID: 33253243356608912}
   m_Layer: 6
-  m_Name: Normal
+  m_Name: FruitDifficulte_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23853,7 +23853,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2906610013219655815, guid: babbb9de64a146543b01e04159d595c3, type: 3}
       propertyPath: m_Name
-      value: Global Volume
+      value: Volume_PostProcess
       objectReference: {fileID: 0}
     - target: {fileID: 5151401438448703361, guid: babbb9de64a146543b01e04159d595c3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23946,7 +23946,7 @@ GameObject:
   - component: {fileID: 8252142516104710397}
   - component: {fileID: 8498843450642495820}
   m_Layer: 6
-  m_Name: Facile
+  m_Name: FruitDifficulte_Facile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23986,7 +23986,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 974399103815838344, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
       propertyPath: m_Name
-      value: FruitJuiceFX
+      value: FX_Fruit_JusDecoupe_Modele
       objectReference: {fileID: 0}
     - target: {fileID: 8838845283255492556, guid: bac7d5b971a941940ba6b8daadf33432, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24108,7 +24108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8590988943210562101, guid: c29e7a783d576c349b0828deb77ff357, type: 3}
       propertyPath: m_Name
-      value: Directional Light
+      value: Lumiere_Lune
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24240,7 +24240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4613781262553435332, guid: 7ed7f1fd02b461a4b921fbcf4b2f37ee, type: 3}
       propertyPath: m_Name
-      value: XR Origin (XR Rig)
+      value: XR_Rig_Joueur
       objectReference: {fileID: 0}
     - target: {fileID: 4613781262553435332, guid: 7ed7f1fd02b461a4b921fbcf4b2f37ee, type: 3}
       propertyPath: m_TagString
@@ -24420,7 +24420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358960962244054901, guid: c31c16029b6e86149ba5c538e43dd954, type: 3}
       propertyPath: m_Name
-      value: Plane
+      value: Sol
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24445,7 +24445,7 @@ GameObject:
   - component: {fileID: 7168190946360860434}
   - component: {fileID: 3164452429594017768}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Etiquette_Hardcore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24547,7 +24547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9032475387385889265, guid: 09b5629d3486c754499908629c3e668d, type: 3}
       propertyPath: m_Name
-      value: XR Interaction Manager
+      value: XR_InteractionManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Fruit_Dore
-  m_Shader: {fileID: 4800000, guid: b5cf3eb34d1c28d489c5d273c8b03c52, type: 3}
+  m_Shader: {fileID: 4800000, guid: 30ca87aae55c3d9409db32685db373a1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,14 +23,23 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Environnement:
+        m_Texture: {fileID: 8900000, guid: 596a48fcb3b700043b73aa9cd8f7c825, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Matcap:
         m_Texture: {fileID: 2800000, guid: 3617916bd10374441acb44b2df008ac1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Eclat: 1.15
+    - _Ambiant: 0.06
+    - _Brillance: 64
+    - _Eclat: 1.5
+    - _Fresnel: 0.6
+    - _Intensite: 1.6
     m_Colors:
     - _Couleur: {r: 1, g: 1, b: 1, a: 1}
+    - _Teinte: {r: 1, g: 0.62, b: 0.14, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

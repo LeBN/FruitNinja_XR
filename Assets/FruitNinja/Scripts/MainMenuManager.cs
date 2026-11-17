@@ -17,15 +17,32 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] accueil;
     public GameObject panneauParametres;
 
+    /// <summary>Rouvre le panneau Paramètres après un changement de décor (rechargement du menu).</summary>
+    public static bool RouvrirParametres;
+
+    private void Awake()
+    {
+#if !UNITY_EDITOR
+        // Au lancement du jeu : menu du décor choisi (ToonScapes sur PC par défaut, d'origine sur Quest)
+        string menu = Decor.Menu;
+        if (menu != SceneManager.GetActiveScene().name)
+        {
+            SceneManager.LoadScene(menu);
+            return;
+        }
+#endif
+    }
+
     private void Start()
     {
-        if (panneauParametres != null) panneauParametres.SetActive(false);
-        RetourMenu.DernierMenu = SceneManager.GetActiveScene().name;
+        Afficher(RouvrirParametres);
+        RouvrirParametres = false;
     }
 
     public void Play()
     {
-        SceneManager.LoadScene(gameSceneName);
+        // Scène de jeu du décor choisi (option « Décor détaillé » des Paramètres)
+        SceneManager.LoadScene(Decor.Jeu);
     }
 
     public void Quit()

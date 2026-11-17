@@ -37,6 +37,6 @@ public class FruitRetour : MonoBehaviour
     private IEnumerator Retour()
     {
         yield return new WaitForSeconds(delai);
-        SceneManager.LoadScene(sceneMenu);
+        SceneManager.LoadScene(Decor.Menu);
     }
 }

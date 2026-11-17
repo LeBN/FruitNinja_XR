@@ -11,6 +11,7 @@ public static class Parametres
     const string KMusique = "param_volume_musique";
     const string KEffets = "param_volume_effets";
     const string KVibrations = "param_vibrations";
+    const string KHighPoly = "param_high_poly";
 
     /// <summary>Appelé à chaque changement de réglage.</summary>
     public static event Action Change;
@@ -37,6 +38,13 @@ public static class Parametres
     {
         get => PlayerPrefs.GetInt(KVibrations, 1) == 1;
         set { PlayerPrefs.SetInt(KVibrations, value ? 1 : 0); Appliquer(); }
+    }
+
+    /// <summary>Décor détaillé ToonScapes (« High poly ») : activé par défaut sur PC, désactivé sur Quest.</summary>
+    public static bool HighPoly
+    {
+        get => PlayerPrefs.GetInt(KHighPoly, PlatformFx.IsQuest ? 0 : 1) == 1;
+        set { PlayerPrefs.SetInt(KHighPoly, value ? 1 : 0); Appliquer(); }
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]

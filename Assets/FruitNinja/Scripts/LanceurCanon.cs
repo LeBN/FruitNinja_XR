@@ -1,17 +1,20 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
-/// Chariot d'un lanceur de fruits : il surgit avec un « boing » cartoon (étirement / écrasement)
-/// et un nuage de fumée, lance le fruit, puis disparaît de la même façon une demi-seconde après.
+/// Canon cartoon d'un lanceur de fruits : il surgit avec un « boing » (étirement / écrasement)
+/// dans un nuage de fumée, tire le fruit vers le haut (recul + fumée à la bouche + « pop »),
+/// puis disparaît de la même façon une demi-seconde après le dernier tir.
 /// </summary>
-public class LanceurChariot : MonoBehaviour
+public class LanceurCanon : MonoBehaviour
 {
-    [Tooltip("Modèle du chariot (enfant, caché au repos).")]
-    public Transform chariot;
+    [Tooltip("Modèle du canon (enfant, caché au repos).")]
+    [FormerlySerializedAs("chariot")]
+    public Transform modele;
     public GameObject fumeePrefab;
-    [Tooltip("Hauteur de sortie des fruits au-dessus du lanceur (m).")]
+    [Tooltip("Hauteur de la bouche du canon au-dessus du lanceur (m) : les fruits sortent de là.")]
     public float hauteurSortie = 0.35f;
 
     [Header("Sons (3D)")]
@@ -23,9 +26,9 @@ public class LanceurChariot : MonoBehaviour
     [Header("Timing (s)")]
     public float dureeApparition = 0.4f;
     public float dureeDisparition = 0.3f;
-    [Tooltip("Délai entre le début de l'apparition et le lancer.")]
-    public float delaiAvantLancer = 0.18f;
-    [Tooltip("Le chariot reste visible ce temps après le dernier lancer.")]
+    [Tooltip("Délai entre le début de l'apparition et le tir.")]
+    public float delaiAvantLancer = 0.22f;
+    [Tooltip("Le canon reste visible ce temps après le dernier tir.")]
     public float resteApresLancer = 0.5f;
 
     private enum Etat { Cache, Apparition, Visible, Disparition }
@@ -33,35 +36,37 @@ public class LanceurChariot : MonoBehaviour
     private Vector3 echelle;
     private float finVisible;
     private Coroutine anim;
+    private Coroutine recul;
 
     public Vector3 PointDeSortie => transform.position + Vector3.up * hauteurSortie;
 
     private void Awake()
     {
-        if (chariot == null) return;
-        echelle = chariot.localScale;
-        chariot.gameObject.SetActive(false);
+        if (modele == null) return;
+        echelle = modele.localScale;
+        modele.gameObject.SetActive(false);
     }
 
-    /// <summary>Fait apparaître le chariot si besoin, puis appelle <paramref name="lancer"/> (qui crée le fruit).</summary>
+    /// <summary>Fait apparaître le canon si besoin, puis appelle <paramref name="lancer"/> (qui crée le fruit).</summary>
     public void Lancer(Action lancer)
     {
         StartCoroutine(SequenceLancer(lancer));
     }
 
-    /// <summary>Fin de partie : le chariot disparaît tout de suite, les lancers en attente sont annulés.</summary>
+    /// <summary>Fin de partie : le canon disparaît tout de suite, les tirs en attente sont annulés.</summary>
     public void Cacher()
     {
         StopAllCoroutines();
         anim = null;
-        if (etat == Etat.Cache || chariot == null) return;
+        recul = null;
+        if (etat == Etat.Cache || modele == null) return;
         anim = StartCoroutine(Disparition());
     }
 
     private IEnumerator SequenceLancer(Action lancer)
     {
         finVisible = Mathf.Max(finVisible, Time.time + delaiAvantLancer + resteApresLancer);
-        if (chariot != null && (etat == Etat.Cache || etat == Etat.Disparition))
+        if (modele != null && (etat == Etat.Cache || etat == Etat.Disparition))
         {
             if (anim != null) StopCoroutine(anim);
             anim = StartCoroutine(Apparition());
@@ -70,14 +75,20 @@ public class LanceurChariot : MonoBehaviour
 
         lancer?.Invoke();
         SonSpatial.JouerAuHasard(sonsLancer, PointDeSortie, volume);
+        Fumee(PointDeSortie, 0.7f);
+        if (modele != null && etat == Etat.Visible)
+        {
+            if (recul != null) StopCoroutine(recul);
+            recul = StartCoroutine(Recul());
+        }
         finVisible = Mathf.Max(finVisible, Time.time + resteApresLancer);
     }
 
     private IEnumerator Apparition()
     {
         etat = Etat.Apparition;
-        chariot.gameObject.SetActive(true);
-        Fumee();
+        modele.gameObject.SetActive(true);
+        Fumee(transform.position + Vector3.up * 0.05f, 1f);
         SonSpatial.JouerAuHasard(sonsApparition, transform.position, volume);
 
         for (float t = 0f; t < 1f; t += Time.deltaTime / dureeApparition)
@@ -85,7 +96,7 @@ public class LanceurChariot : MonoBehaviour
             AppliquerEchelle(Ressort(t), Ressort(Mathf.Min(1f, t + 0.02f)) - Ressort(t));
             yield return null;
         }
-        chariot.localScale = echelle;
+        modele.localScale = echelle;
         etat = Etat.Visible;
 
         while (Time.time < finVisible) yield return null;
@@ -95,12 +106,13 @@ public class LanceurChariot : MonoBehaviour
     private IEnumerator Disparition()
     {
         etat = Etat.Disparition;
-        Fumee();
+        if (recul != null) { StopCoroutine(recul); recul = null; }
+        Fumee(transform.position + Vector3.up * 0.05f, 1f);
         SonSpatial.Jouer(sonDisparition, transform.position, volume);
 
         for (float t = 0f; t < 1f; t += Time.deltaTime / dureeDisparition)
         {
-            // Anticipation (le chariot s'écrase), puis il s'étire vers le haut en rétrécissant.
+            // Anticipation (le canon s'écrase), puis il s'étire vers le haut en rétrécissant.
             float y, xz;
             if (t < 0.35f)
             {
@@ -114,13 +126,27 @@ public class LanceurChariot : MonoBehaviour
                 y = (1f - k) * (0.7f + 0.9f * k);
                 xz = 1.2f * Mathf.Pow(1f - k, 1.5f);
             }
-            chariot.localScale = Vector3.Scale(echelle, new Vector3(xz, y, xz));
+            modele.localScale = Vector3.Scale(echelle, new Vector3(xz, y, xz));
             yield return null;
         }
-        chariot.localScale = echelle;
-        chariot.gameObject.SetActive(false);
+        modele.localScale = echelle;
+        modele.gameObject.SetActive(false);
         etat = Etat.Cache;
         anim = null;
+    }
+
+    // Recul cartoon au tir : écrasé puis rebond.
+    private IEnumerator Recul()
+    {
+        const float duree = 0.25f;
+        for (float t = 0f; t < 1f; t += Time.deltaTime / duree)
+        {
+            float d = Mathf.Sin(t * Mathf.PI) * (1f - t) * 0.45f;
+            modele.localScale = Vector3.Scale(echelle, new Vector3(1f + d * 0.5f, 1f - d, 1f + d * 0.5f));
+            yield return null;
+        }
+        if (etat == Etat.Visible) modele.localScale = echelle;
+        recul = null;
     }
 
     // Courbe « boing » : 0 → dépasse 1 → rebondit → se stabilise à 1.
@@ -130,13 +156,14 @@ public class LanceurChariot : MonoBehaviour
     private void AppliquerEchelle(float s, float vitesse)
     {
         float d = Mathf.Clamp(vitesse * 12f, -0.35f, 0.35f);
-        chariot.localScale = Vector3.Scale(echelle, new Vector3(s * (1f - d * 0.5f), s * (1f + d), s * (1f - d * 0.5f)));
+        modele.localScale = Vector3.Scale(echelle, new Vector3(s * (1f - d * 0.5f), s * (1f + d), s * (1f - d * 0.5f)));
     }
 
-    private void Fumee()
+    private void Fumee(Vector3 position, float taille)
     {
         if (fumeePrefab == null) return;
-        var fx = Instantiate(fumeePrefab, transform.position + Vector3.up * 0.08f, Quaternion.identity);
-        Destroy(fx, 2f);
+        var fx = Instantiate(fumeePrefab, position, Quaternion.identity);
+        fx.transform.localScale = Vector3.one * taille;
+        Destroy(fx, 2.5f);
     }
 }

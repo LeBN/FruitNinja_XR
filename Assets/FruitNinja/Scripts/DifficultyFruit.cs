@@ -40,7 +40,7 @@ public class DifficultyFruit : MonoBehaviour
     public void AfficherDuree(bool choisi, float duree)
     {
         if (texte == null) return;
-        texte.text = choisi ? $"{texteBase}\n<size=65%>{Mathf.RoundToInt(duree)} s</size>" : texteBase;
+        texte.text = choisi ? $"{texteBase} <size=60%>· {Mathf.RoundToInt(duree)} s</size>" : texteBase;
     }
 
     /// <summary>Appelé par SwordSlicer quand la lame coupe ce fruit.</summary>

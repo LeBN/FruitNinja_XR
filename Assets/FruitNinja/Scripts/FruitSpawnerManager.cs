@@ -61,10 +61,10 @@ public class FruitSpawnerManager : MonoBehaviour
 
         if (prefabToSpawn == null) return;
 
-        // Le chariot du lanceur surgit, lance le fruit (son 3D) puis disparaît
-        LanceurChariot chariot = spawner.GetComponent<LanceurChariot>();
-        if (chariot != null)
-            chariot.Lancer(() => LaunchObject(prefabToSpawn, chariot.PointDeSortie));
+        // Le canon du lanceur surgit, tire le fruit (son 3D) puis disparaît
+        LanceurCanon canon = spawner.GetComponent<LanceurCanon>();
+        if (canon != null)
+            canon.Lancer(() => LaunchObject(prefabToSpawn, canon.PointDeSortie));
         else
             LaunchObject(prefabToSpawn, spawner.position + Vector3.up * 0.5f);
     }
@@ -102,8 +102,8 @@ public class FruitSpawnerManager : MonoBehaviour
         StopAllCoroutines();
         foreach (var spawner in spawners)
         {
-            var chariot = spawner != null ? spawner.GetComponent<LanceurChariot>() : null;
-            if (chariot != null) chariot.Cacher();
+            var canon = spawner != null ? spawner.GetComponent<LanceurCanon>() : null;
+            if (canon != null) canon.Cacher();
         }
     }
 }

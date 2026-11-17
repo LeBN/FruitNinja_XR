@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_FX_Fumee_Chariot
+  m_Name: Mat_FX_Fumee_Canon
   m_Shader: {fileID: 4800000, guid: 2c5e2460172cd764dafbc05e501e4df8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3578791912880133245, guid: 6c2c6c1faf4ce714a88e93c1f4517d7c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ae4451c951f0b14a96e8979cccc8c78, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6488,6 +6492,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4950630947307842164, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d813e0a2ba6338b479e74ddd9c8b17ab, type: 2}
     - target: {fileID: 6667854750102642344, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Hill_01A
@@ -7532,6 +7540,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5502684871469480450, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0599e13379b6b87418c294f6643d5c53, type: 2}
     - target: {fileID: 6080317653044989662, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Mountain_01A
@@ -7942,6 +7954,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8392431352494492096, guid: c538ccea926323f4ba5297b02d96aa77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf68f08432258b34096bc0e0da4c6614, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13162,6 +13178,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 517051822068987930, guid: ec53a75384efca544aa782e4b32141ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8cf943858f470c54e83f509b072d9d6a, type: 2}
     - target: {fileID: 2238352684429200582, guid: ec53a75384efca544aa782e4b32141ef, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Mountain_02A
@@ -17212,6 +17232,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5502684871469480450, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0599e13379b6b87418c294f6643d5c53, type: 2}
     - target: {fileID: 6080317653044989662, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Mountain_01A
@@ -19232,6 +19256,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5502684871469480450, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0599e13379b6b87418c294f6643d5c53, type: 2}
     - target: {fileID: 6080317653044989662, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Mountain_01A
@@ -21079,6 +21107,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4950630947307842164, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d813e0a2ba6338b479e74ddd9c8b17ab, type: 2}
     - target: {fileID: 6667854750102642344, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Hill_01A
@@ -21461,6 +21493,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3578791912880133245, guid: 6c2c6c1faf4ce714a88e93c1f4517d7c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ae4451c951f0b14a96e8979cccc8c78, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24658,6 +24694,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8392431352494492096, guid: c538ccea926323f4ba5297b02d96aa77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf68f08432258b34096bc0e0da4c6614, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24744,6 +24784,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3578791912880133245, guid: 6c2c6c1faf4ce714a88e93c1f4517d7c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ae4451c951f0b14a96e8979cccc8c78, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25854,6 +25898,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4950630947307842164, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d813e0a2ba6338b479e74ddd9c8b17ab, type: 2}
     - target: {fileID: 6667854750102642344, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Hill_01A
@@ -26187,6 +26235,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 517051822068987930, guid: ec53a75384efca544aa782e4b32141ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8cf943858f470c54e83f509b072d9d6a, type: 2}
     - target: {fileID: 2238352684429200582, guid: ec53a75384efca544aa782e4b32141ef, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Mountain_02A
@@ -27399,6 +27451,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4950630947307842164, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d813e0a2ba6338b479e74ddd9c8b17ab, type: 2}
     - target: {fileID: 6667854750102642344, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Hill_01A
@@ -28906,6 +28962,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5502684871469480450, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0599e13379b6b87418c294f6643d5c53, type: 2}
     - target: {fileID: 6080317653044989662, guid: 23b4d47a66e596d40ae1300fdaf3493d, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Mountain_01A
@@ -29310,6 +29370,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4950630947307842164, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d813e0a2ba6338b479e74ddd9c8b17ab, type: 2}
     - target: {fileID: 6667854750102642344, guid: 501044ee8a0f3d74fb5c4dfcb3775c8a, type: 3}
       propertyPath: m_Name
       value: TSI_BG_Hill_01A
@@ -33501,7 +33565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe3a072d512c7d478d8ad1a306a1110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomQuest
-  desactiverSurQuest: 1
+  etalement: 0.3
+  niveauxDeFlou: 4
+  seuil: 1.15
 --- !u!1001 &2893627767027180987
 PrefabInstance:
   m_ObjectHideFlags: 0

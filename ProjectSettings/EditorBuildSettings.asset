@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FruitNinja/Scenes/Debug_Fruits.unity
     guid: eb68c269f2b453943abf2d339fa1b37c
+  - enabled: 1
+    path: Assets/FruitNinja/Scenes/MainMenu_ToonScapes.unity
+    guid: f4488d03acc5103498bff9f5768a3d60
+  - enabled: 1
+    path: Assets/FruitNinja/Scenes/Game_ToonScapes.unity
+    guid: 6778b82e782996d49b047e50222e3f5e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 774887edcdf6fc746aa525e3ff957891, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

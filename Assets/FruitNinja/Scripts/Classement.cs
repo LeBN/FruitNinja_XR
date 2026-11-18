@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public static class Classement
 {
-    public const int Taille = 8;
+    public const int Taille = 20;
     const string Cle = "classement_scores";
 
     [Serializable]

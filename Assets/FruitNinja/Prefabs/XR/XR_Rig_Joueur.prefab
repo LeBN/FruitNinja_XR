@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 2226758736488991934}
   - component: {fileID: 3236519182647098688}
   - component: {fileID: 8109570339478927175}
+  - component: {fileID: 6697107210223582886}
   m_Layer: 2
   m_Name: XR_Rig_Joueur
   m_TagString: Untagged
@@ -668,6 +669,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimiteZone
   rayon: 7
+--- !u!114 &6697107210223582886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613781262553435332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a93557398c9304bbe48f1e2bb74472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MasquerPointeurs
+  prefixeScenesJeu: Game
 --- !u!1 &5017098095581179098
 GameObject:
   m_ObjectHideFlags: 0

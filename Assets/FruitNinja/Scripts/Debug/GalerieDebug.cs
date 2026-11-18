@@ -68,7 +68,7 @@ public class GalerieDebug : MonoBehaviour
         // Pomme d'or : on garde les valeurs d'origine (restaurées en quittant la scène)
         if (materiauOr != null)
             foreach (var p in ProprietesOr)
-                valeursOrigine[p] = p == "_Teinte" ? (Vector4)materiauOr.GetColor(p) : new Vector4(materiauOr.GetFloat(p), 0, 0, 0);
+                valeursOrigine[p] = p == "_Teinte" ? materiauOr.GetVector(p) : new Vector4(materiauOr.GetFloat(p), 0, 0, 0);   // GetVector : sans conversion de couleur (pas d'arrondi)
 
         foreach (var c in FindObjectsByType<CurseurDebug>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
@@ -295,7 +295,7 @@ public class GalerieDebug : MonoBehaviour
         if (materiauOr == null) return;
         foreach (var kv in valeursOrigine)
         {
-            if (kv.Key == "_Teinte") materiauOr.SetColor(kv.Key, kv.Value);
+            if (kv.Key == "_Teinte") materiauOr.SetVector(kv.Key, kv.Value);
             else materiauOr.SetFloat(kv.Key, kv.Value.x);
         }
     }

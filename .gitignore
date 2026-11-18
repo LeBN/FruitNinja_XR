@@ -76,3 +76,8 @@ crashlytics-build.properties
 
 # Claude Code (worktrees temporaires)
 .claude/
+
+# Clé de signature de l APK (jamais dans le dépôt public)
+/[Ss]ignature/
+*.keystore
+*.jks

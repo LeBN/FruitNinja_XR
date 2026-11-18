@@ -73,7 +73,7 @@ Premier test dans le Meta XR Simulator, puis tests dans le casque au fil du proj
 
 **1. Regrouper scènes, scripts, prefabs, ressources** ✅ — tout ce qui est propre au jeu est dans `Assets/FruitNinja/`. → [README, organisation du dépôt](../../README.md#organisation-du-dépôt)
 
-**2. Dossiers dédiés, rien à la racine d'Assets** ✅ — `Scenes`, `Scripts`, `Shaders`, `Prefabs`, `Materials`, `Textures`, `UI`, `Sons`, `Modeles`, `Polices`, `Settings`. Les packs tiers restent dans leurs propres dossiers.
+**2. Dossiers dédiés, rien à la racine d'Assets** ✅ — `Scenes`, `Scripts` (rangés par domaine : `Jeu`, `Sabres`, `VR`, `Interface`, `Reglages`, `Audio`, `Rendu`, `Debug`, `Editor`), `Prefabs`, `Resources`, `Materiaux`, `Shaders`, `Textures`, `Modeles`, `Interface` (images et polices), `Sons`, `Reglages`. Les packs tiers sont regroupés dans `Assets/ThirdParty/` ; seuls les dossiers gérés par Unity et les packages restent à la racine.
 
 **3. Prefabs des fruits, bombes, sabres, effets ; noms explicites** ✅
 
@@ -81,7 +81,7 @@ Premier test dans le Meta XR Simulator, puis tests dans le casque au fil du proj
 |---|---|
 | Fruits | `Prefabs/Fruits/Fruit_Pomme`, `Fruit_Avocat`, `Fruit_Banane`, `Fruit_Cerises`, `Fruit_Citron`, `Fruit_Peche`, `Fruit_Cacahuete`, `Fruit_Poire`, `Fruit_Fraise`, `Fruit_Pasteque`, `Fruit_Dore_Bonus` ; `Resources/Fruit_Demarrage` |
 | Bombe | `Prefabs/Bombes/Bombe` |
-| Sabres | `JTS_TheSamuraiSword/Prefabs/Nodachi` (pack), instancié en `Sabre_Gauche` / `Sabre_Droit` |
+| Sabres | `ThirdParty/JTS_TheSamuraiSword/Prefabs/Nodachi` (pack), instancié en `Sabre_Gauche` / `Sabre_Droit` |
 | Effets | `Prefabs/FX/FX_Fruit_Jus_PCVR`, `FX_Fruit_Jus_Quest`, `FX_Bombe_Explosion_PCVR`, `FX_Bombe_Explosion_Quest`, `FX_Canon_Fumee` |
 | Joueur, décor | `Prefabs/XR/XR_Rig_Joueur`, `Prefabs/Environnement/Env_Canon_Lanceur`, `Env_Lumiere_Lune`, `Env_Volume_PostProcess`, `Env_Sol` |
 

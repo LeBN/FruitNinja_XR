@@ -16,7 +16,7 @@ Le dépôt est **public** : on n'y met que ce qu'on a le droit de redistribuer, 
 | Packs déjà présents au S7 (fruits, nature, sabre, EzySlice, Ball Pack…) | ✅ | repris tels quels |
 | **Vefects** (effets de particules) | ⚠️ en partie | seules les **textures et le maillage utilisés** par les effets sont versionnés |
 | **ToonScapes – Spring Isles** (décor high poly) | ❌ | pack acheté, 1,8 Go, licence non redistribuable : **à importer soi-même** dans `Assets/ToonScapes/` |
-| Copies de matériaux ToonScapes ajustés pour la nuit | ✅ | dans `Assets/FruitNinja/Materials/ToonScapes/` (ils pointent vers les textures du pack) |
+| Copies de matériaux ToonScapes ajustés pour la nuit | ✅ | dans `Assets/FruitNinja/Materiaux/ToonScapes/` (ils pointent vers les textures du pack) |
 | Builds (`.exe`, `.apk`) | ❌ | générés à la demande (voir [Builds](08-builds-et-deploiement.md)) |
 
 > [!IMPORTANT]
@@ -48,9 +48,9 @@ Le dépôt est **public** : on n'y met que ce qu'on a le droit de redistribuer, 
 | Ressource | Source / licence | Utilisation |
 |---|---|---|
 | Logo « Fruity Ninja VR » | image générée par IA | menu, écran de démarrage |
-| UI en bois et or | « Collection d'éléments d'interface utilisateur de jeu en bois » : **vecteur Premium** [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm), par **[abusayem9024](https://www.magnific.com/fr/auteur/abusayem9024)**, licence Premium, **crédit obligatoire** : « Image de abusayem9024 sur Magnific » (`UI/Bois/CREDITS.txt`) | boutons, planches, curseurs |
-| Lilita One | Google Fonts, **SIL Open Font License 1.1** (`Polices/LilitaOne_Licence_OFL.txt`) | tous les textes |
-| Émoji pastèque | **Noto Emoji** (Google) (`UI/Icone/NotoEmoji_Licence.txt`) | icône de l'application |
+| UI en bois et or | « Collection d'éléments d'interface utilisateur de jeu en bois » : **vecteur Premium** [Magnific n° 423087565](https://www.magnific.com/fr/vecteurs-premium/collection-elements-interface-utilisateur-jeu-bois-pour-conception-interface_423087565.htm), par **[abusayem9024](https://www.magnific.com/fr/auteur/abusayem9024)**, licence Premium, **crédit obligatoire** : « Image de abusayem9024 sur Magnific » (`Interface/Images/Bois/CREDITS.txt`) | boutons, planches, curseurs |
+| Lilita One | Google Fonts, **SIL Open Font License 1.1** (`Interface/Polices/LilitaOne_Licence_OFL.txt`) | tous les textes |
+| Émoji pastèque | **Noto Emoji** (Google) (`Interface/Images/Icone/NotoEmoji_Licence.txt`) | icône de l'application |
 
 ### Sons
 

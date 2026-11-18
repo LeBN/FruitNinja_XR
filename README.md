@@ -184,21 +184,34 @@ Chaque bloc est expliqué dans [Architecture](docs/01-architecture.md).
 
 ```text
 Assets/
-└── FruitNinja/            ← tout ce qui est propre au jeu
-    ├── Scenes/            MainMenu, Game, Debug_Fruits (+ copies ToonScapes, données d'éclairage)
-    ├── Scripts/           le code C# du jeu (un script = un rôle)
-    ├── Shaders/           shaders URP maison (reflet des lames, fantôme, particules, or)
-    ├── Prefabs/           Fruits, Bombes, FX, XR, Environnement
-    ├── Materials/         matériaux du jeu (+ FX, ToonScapes)
-    ├── Textures/ UI/      ciel, canon, interface en bois, logo, icône
-    ├── Sons/              Musiques, Ambiances, Effets
-    ├── Modeles/           canon cartoon
-    ├── Polices/           Lilita One (OFL)
-    └── Settings/          réglages d'éclairage précalculé
+├── FruitNinja/            ← tout ce qui est propre au jeu (noms en français, rangés par type)
+│   ├── Scenes/            MainMenu, Game, Debug_Fruits (+ copies ToonScapes, données d'éclairage)
+│   ├── Scripts/           le code C#, rangé par domaine :
+│   │   ├── Jeu/           partie, lanceurs, difficultés, classement, apparition du Start
+│   │   ├── Sabres/        découpe, sons de sabre, reflet des lames
+│   │   ├── VR/            zone de 7 m, rotation, pointeurs, vibrations
+│   │   ├── Interface/     menus, paramètres, planche du classement
+│   │   ├── Reglages/      paramètres sauvegardés, choix du décor, plateforme
+│   │   ├── Audio/         sons 3D, musique
+│   │   ├── Rendu/         reflet de l'or
+│   │   ├── Debug/         galerie de debug
+│   │   └── Editor/        outils de l'éditeur (builds)
+│   ├── Prefabs/           Fruits, Bombes, FX, XR, Environnement, Debug
+│   ├── Resources/         fruit de démarrage (chargé par son nom)
+│   ├── Materiaux/         matériaux du jeu (+ FX, copies de nuit ToonScapes)
+│   ├── Shaders/           shaders URP maison (reflet des lames, fantôme, particules, or)
+│   ├── Textures/          ciel, canon, effets, cubemaps de reflet
+│   ├── Modeles/           canon cartoon
+│   ├── Interface/         Images/ (bois, boutons, logo, icônes, démarrage) et Polices/ (Lilita One)
+│   ├── Sons/              Musiques, Ambiances, Effets
+│   └── Reglages/          réglages d'éclairage précalculé
+├── ThirdParty/            ← packs tiers versionnés, sans modification (fruits, nature, sabre, EzySlice…)
+└── ToonScapes/            ← décor high poly, non versionné (licence), à importer soi-même
 docs/                      ← la documentation que tu lis
+Installeur/                ← script de l'installeur Windows (Inno Setup)
 ```
 
-Les dossiers des packs tiers (Low Poly Fruits, Simple Nature Pack, sabre JTS, EzySlice…) restent à la racine d'`Assets`, sans modification.
+Les autres dossiers à la racine d'`Assets` (`Samples`, `TextMesh Pro`, `XR`, `XRI`, `Oculus`, `Settings`…) sont gérés par Unity et les packages : ils doivent rester à leur place.
 
 ---
 

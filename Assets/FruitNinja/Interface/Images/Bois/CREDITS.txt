@@ -1,4 +1,4 @@
-Éléments d'interface en bois et or (UI/Bois/*.png et UI/Boutons/Bouton_Bois_Vide.png)
+Éléments d'interface en bois et or (Interface/Images/Bois/*.png et Interface/Images/Boutons/Bouton_Bois_Vide.png)
 
 Source : « Collection d'éléments d'interface utilisateur de jeu en bois pour la conception d'interface »
 Vecteur Premium n° 423087565, Magnific :

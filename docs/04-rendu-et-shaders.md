@@ -82,7 +82,7 @@ flowchart LR
 | lumière indirecte et occlusion ambiante du sol, des rochers, des falaises et des collines | lumière directe de la lune et ses ombres, pour tous les objets |
 | sonde de reflets de la zone de jeu | fruits, sabres, canons, végétation |
 
-Réglages (`Assets/FruitNinja/Settings/Eclairage_Nuit.lighting`) : lightmapper GPU progressif, 3 texels/m, lightmaps de 2048 px compressées, occlusion ambiante sur 1,5 m, indirect ×1,8.
+Réglages (`Assets/FruitNinja/Reglages/Eclairage_Nuit.lighting`) : lightmapper GPU progressif, 3 texels/m, lightmaps de 2048 px compressées, occlusion ambiante sur 1,5 m, indirect ×1,8.
 
 > [!WARNING]
 > **Le premier essai était raté, et c'est instructif.** En mode *Subtractive* avec des sondes de lumière, la lumière directe de la lune n'éclairait plus la végétation, et les sondes, très bouchées par la forêt et les collines, étaient 5 à 10 fois plus sombres que l'ambiance réglée à la main : les arbres sont devenus noirs.
@@ -146,7 +146,7 @@ Le pack ToonScapes – Spring Isles fournit ses propres **shaders URP** (génér
 | Touffes d'herbe | copie du matériau : normale inversée, brillance 0,84 → 0,1 |
 | Montagnes et collines de fond | copie des matériaux **sans la brume de hauteur intégrée**, réglée pour le jour, qui les délavait |
 
-Les matériaux ajustés sont des **copies** dans `Assets/FruitNinja/Materials/ToonScapes/` : le pack lui-même n'est jamais modifié.
+Les matériaux ajustés sont des **copies** dans `Assets/FruitNinja/Materiaux/ToonScapes/` : le pack lui-même n'est jamais modifié.
 
 ---
 

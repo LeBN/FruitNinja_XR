@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 8498843449589660495}
   - component: {fileID: 6533592660574630562}
   - component: {fileID: 8252142517224524537}
+  - component: {fileID: 625602544040595698}
   m_Layer: 6
   m_Name: Fruit_Demarrage
   m_TagString: StartButton
@@ -278,6 +279,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.007963533
   m_Center: {x: 0.00009602611, y: -0.00002010306, z: 0.0000000069849193}
+--- !u!114 &625602544040595698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843879479705570053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b6ae427d99a5d4b93978d7a772a13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApparitionMagique
+  son: {fileID: 8300000, guid: 36e8389378f3e534f980ac51c392aed4, type: 3}
+  volume: 0.9
+  materiauAnneau: {fileID: 2100000, guid: 79e7d79a88387ad4e84f899d9b5992c6, type: 2}
+  materiauEclat: {fileID: 2100000, guid: d487908c450743440906d049d32ac0b8, type: 2}
+  materiauEtincelle: {fileID: 2100000, guid: 522a22a52b24a3347820db170af807ab, type: 2}
+  couleur: {r: 0.25, g: 0.85, b: 1, a: 1}
+  intensiteEclat: 4
+  dureeConvergence: 0.65
+  rayonDepart: 1.1
 --- !u!1 &5395624928179995860
 GameObject:
   m_ObjectHideFlags: 0

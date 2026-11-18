@@ -49,7 +49,7 @@ Un canvas en espace monde, à environ 3 m du joueur : le logo, **Jouer**, **Quit
 | Vibrations | Oui / Non | active ou coupe les vibrations ; une petite vibration confirme le « Oui » |
 | Décor détaillé | Oui / Non | décor **High poly** (ToonScapes) ou **Low poly** ; recharge le menu dans le décor choisi et rouvre le panneau |
 | Rotation | Instantanée / Continue | type de rotation au joystick (voir [VR et interactions](03-vr-et-interactions.md#rotation-et-zone-de-jeu)) |
-| Debug | bouton | ouvre la scène `Debug_Fruits` (tous les fruits exposés), qui a son propre bouton Retour |
+| Debug | bouton | ouvre la **galerie de debug** (voir plus bas), qui a son propre bouton Retour |
 | Effacer scores | bouton | vide le classement |
 | Retour | bouton | revient à l'accueil |
 
@@ -95,10 +95,40 @@ Tous utilisent **Lilita One**, définie aussi comme **police par défaut de Text
 
 | Élément | Réglage |
 |---|---|
-| Écran de démarrage Unity | logo du jeu sur fond bleu nuit, **sans le logo Unity** (possible avec Unity 6) |
-| Écran de démarrage en VR | `virtualRealitySplashScreen` = la même image |
-| Écran de démarrage système du Quest | fonctionnalité Meta Quest d'OpenXR → `systemSplashScreen` (affiché par le casque pendant le chargement) |
-| Icône de l'application | émoji pastèque de Noto Emoji sur fond nuit arrondi, pour PC et Android |
+| Écran de démarrage Unity | logo du jeu, **sans le logo Unity** (possible avec Unity 6), sur fond **noir** : invisible dans le noir du casque |
+| Écran de démarrage en VR | `virtualRealitySplashScreen` = le logo seul sur **fond transparent** |
+| Écran de démarrage système du Quest | fonctionnalité Meta Quest d'OpenXR → `systemSplashScreen` = le même logo transparent (affiché par le casque pendant le chargement) |
+| Icônes | PC (8 tailles) ; Android **adaptative** (fond dégradé + pastèque dans la zone sûre), **ronde** et **classique**, pour toutes les densités |
+
+> [!NOTE]
+> Une image opaque, même sombre, s'affiche dans le casque comme un **panneau carré** flottant dans le noir. Avec un fond transparent, seul le logo apparaît.
+
+---
+
+## La galerie de debug
+
+La scène `Debug_Fruits` permet de **tester toutes les fonctionnalités** du jeu sans lancer de partie.
+
+| Zone | Contenu |
+|---|---|
+| Galerie (à droite) | 13 socles en arc : les 10 fruits, la bombe, la pomme d'or, le fruit Start. Les objets, agrandis, tournent lentement ; on peut les couper, ils réapparaissent ensuite (`SocleDebug`). |
+| Devant | deux canons, et deux points d'effets **PC** et **Quest** côte à côte pour comparer les deux versions d'un effet |
+| À gauche | la planche du classement, et le grand panneau à onglets |
+
+Le panneau (`GalerieDebug`) a cinq onglets :
+
+| Onglet | Tests |
+|---|---|
+| Lancers | fruit au hasard, bombe, pomme d'or, vague de 5, chaque fruit, apparition du Start |
+| Effets | jus et explosion PC + Quest, fumée, apparition des canons, reflet des lames, textes de score |
+| Sons | chaque effet sonore, musiques, ambiance, vibrations légère / moyenne / forte |
+| Pomme d'or | 9 curseurs (teinte, intensité, contraste, lumière minimale, bords, reflet de la lune, netteté), reflet low / high poly, valeurs affichées pour les reporter ensuite |
+| Partie | ajouter des scores, remplir ou effacer le classement, remettre les socles, charger chaque scène |
+
+Les réglages de la pomme d'or modifient le matériau en direct ; ses valeurs d'origine sont restaurées en quittant la scène.
+
+> [!TIP]
+> Les boutons sont **construits par un script d'éditeur** à partir des boutons du panneau Paramètres : même style, et une taille de police calculée pour que chaque libellé tienne dans son bouton.
 
 ---
 

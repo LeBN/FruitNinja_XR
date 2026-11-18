@@ -115,6 +115,17 @@ Pour le reconstruire après un nouveau build Windows :
 2. `File > Build Profiles` → **Android**. Dans *XR Plug-in Management > Android* : **OpenXR** + la fonctionnalité **Meta Quest Support**.
 3. Générer (menu *Fruity Ninja → Builds → Meta Quest (APK)*).
 
+### Toujours la même signature
+
+Android n'accepte une **mise à jour** que si le nouvel APK est signé avec la **même clé** que celui installé ; sinon il faut désinstaller, et les données du jeu (classement, réglages) sont perdues.
+
+- `ConstructionBuilds` signe l'APK avec `Signature/FruityNinjaVR.keystore` s'il existe à la racine du projet. Ce dossier est **ignoré par git** : une clé ne se publie jamais.
+- Cette clé est une **copie** de la clé de débogage qui a signé les premiers APK (même empreinte SHA-256) : aucune réinstallation n'a été nécessaire.
+- Sans ce fichier (autre machine), le build garde la signature par défaut de Unity.
+
+> [!IMPORTANT]
+> Garde une copie de `Signature/FruityNinjaVR.keystore` en lieu sûr : c'est elle qui permet de mettre à jour le jeu sans perdre les données sur le casque.
+
 ---
 
 ## Installer l'APK sur le casque

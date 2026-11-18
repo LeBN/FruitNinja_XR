@@ -42,6 +42,7 @@
 | Sabre, geste lent / rapide | `Sabre_Swing_Lent_1-3` / `Sabre_Swing_Rapide_1-3` | 3D, sur le sabre |
 | Tir d'un canon | `Lanceur_Pop_1-4.ogg` | 3D, à la bouche du canon |
 | Apparition / disparition d'un canon | `Chariot_Apparition_Boing_1-3.ogg` / `Chariot_Disparition_Pouf.ogg` | 3D, au pied du canon |
+| Apparition du fruit Start | `Start_Apparition_Magique.wav` (synthétisé : whoosh qui monte, puis impact grave, carillon et étincelles) | 3D, au point d'apparition |
 
 Quand il existe plusieurs variantes d'un son, on en tire une **au hasard**, avec une légère variation de hauteur (±5 %) : la répétition s'entend beaucoup moins.
 

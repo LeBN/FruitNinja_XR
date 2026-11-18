@@ -30,7 +30,8 @@ Plutôt qu'un menu à boutons, la difficulté se choisit **avec le geste du jeu*
 1. La **fraise** = Facile, la **pomme** = Normal, la **bombe** = Hardcore.
 2. Le fruit coupé tombe en deux morceaux, puis laisse un **fantôme** translucide à sa place : tu vois ce que tu as choisi.
 3. Si tu changes d'avis, coupe un autre fruit : l'ancien réapparaît, le nouveau devient fantôme.
-4. La **durée** de la difficulté choisie s'affiche à côté de son nom (« FACILE · 90 s ») et sur le chrono.
+4. La **durée** de la difficulté choisie s'affiche à côté de son nom (« FACILE · 90 s », sur une seule ligne grâce à des espaces insécables) et sur le chrono.
+5. Chaque étiquette a sa couleur : **Facile vert**, **Normal orange**, **Hardcore rouge**, **Start cyan**, Retour jaune.
 
 Côté code :
 
@@ -60,7 +61,15 @@ En plus de ces réglages, chaque objet lancé a **10 % de chances** d'être une 
 
 ## Le départ : fruit START, « Prêt ? » et reflet des lames
 
-Après le choix de la difficulté, un fruit **START** apparaît à ta droite. Le couper appelle `GameManager.StartGame()`, qui lance une petite séquence :
+Après le choix de la difficulté, un fruit **START** apparaît à ta droite, avec une **apparition « éclair magique »** (`ApparitionMagique`) :
+
+1. trois anneaux de lumière cyan, inclinés différemment, se resserrent sur le point d'apparition en tournant (0,65 s), pendant qu'un « whoosh » monte ;
+2. à l'impact : éclair, gerbe d'étincelles (moitié moins sur Quest), « pop » élastique du fruit, carillon et petite vibration ;
+3. le fruit ne peut être coupé qu'une fois apparu.
+
+Le son est synthétisé pour l'occasion et calé sur l'animation. L'intensité lumineuse des anneaux et de l'éclair vient de leurs **matériaux** (couleurs HDR) et non des couleurs de sommets, limitées entre 0 et 1 : c'est ce qui permet au bloom de les faire briller.
+
+Le couper appelle `GameManager.StartGame()`, qui lance une petite séquence :
 
 ```mermaid
 sequenceDiagram
@@ -166,10 +175,15 @@ Tant que le casque n'est pas suivi (premières images, casque posé), on garde l
 
 1. lit la liste sauvegardée (JSON dans les PlayerPrefs) ;
 2. ajoute le nouveau score avec sa difficulté et la date ;
-3. trie, garde les **8 meilleurs**, sauvegarde ;
+3. trie, garde les **20 meilleurs**, sauvegarde ;
 4. prévient l'affichage, qui surligne le **dernier score en doré**.
 
 L'affichage (`AffichageClassement`) utilise les balises `<pos=…%>` de TextMeshPro pour aligner les colonnes (rang, score, difficulté, date) sans tableau d'UI compliqué. Le bouton **Effacer scores** des Paramètres vide le classement.
+
+**Défilement automatique** : la planche affiche environ 6 lignes. Comme il n'y a pas de rayon en partie, la liste défile toute seule dans une fenêtre masquée (`RectMask2D`) : pause en haut, descente lente, pause en bas, remontée. Après une partie, elle se place d'abord sur ton **nouveau score** (surligné en doré) pendant quelques secondes.
+
+> [!NOTE]
+> Le classement est sauvegardé dans les `PlayerPrefs` : il survit aux mises à jour du jeu (registre Windows sur PC, données de l'application sur Quest, tant que l'APK est signé avec la même clé, voir [Builds](08-builds-et-deploiement.md)).
 
 ---
 

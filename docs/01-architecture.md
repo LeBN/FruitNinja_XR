@@ -24,7 +24,7 @@
 |---|---|---|
 | 0 | `MainMenu` | menu principal, décor **low poly** (scène de démarrage) |
 | 1 | `Game` | la partie, décor **low poly** |
-| 2 | `Debug_Fruits` | vitrine de tous les fruits, ouverte depuis les Paramètres |
+| 2 | `Debug_Fruits` | galerie de debug : tous les objets du jeu et un panneau pour tester chaque fonctionnalité, ouverte depuis les Paramètres |
 | 3 | `MainMenu_ToonScapes` | menu principal, décor **high poly** |
 | 4 | `Game_ToonScapes` | la partie, décor **high poly** |
 
@@ -98,7 +98,10 @@ Les scripts sont dans `Assets/FruitNinja/Scripts/`. Ils sont regroupés ici par 
 | `DifficultyFruit` | un fruit de difficulté : fantôme quand il est choisi, étiquette, durée affichée |
 | `FruitRetour` | la banane « RETOUR » : coupée → retour au menu |
 | `PlacementSelonJoueur` / `HauteurJoueur` | placent les fruits à hauteur de sabre selon ta taille |
-| `Classement` / `AffichageClassement` | sauvegarde et affichage des 8 meilleurs scores |
+| `Classement` / `AffichageClassement` | sauvegarde et affichage des 20 meilleurs scores (défilement automatique) |
+| `ApparitionMagique` | apparition « éclair magique » du fruit START |
+| `MasquerPointeurs` | aucun pointeur en partie (rayon des menus, téléportation, poke) |
+| `GalerieDebug`, `SocleDebug`, `BoutonDebug`, `CurseurDebug` | galerie et panneau de la scène de debug |
 
 ### Lancer et couper
 

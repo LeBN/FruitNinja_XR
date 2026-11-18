@@ -28,7 +28,7 @@ Une nuit réussie en jeu n'est pas une scène noire : c'est une scène **bleue e
 | **Ciel** | texture générée (`Ciel_NuitEtoilee`) : dégradé bleu nuit, étoiles, lune rouge | donne la direction de la lumière et l'identité visuelle |
 | **Lumière de lune** | directionnelle, bleu clair (0,62 ; 0,76 ; 1), intensité 0,9, ombres à **pleine force** | découpe les formes, ombres bien marquées |
 | **Lumière d'ambiance** | *Trilight* : ciel bleu, horizon bleu moyen, sol bleu sombre (+20 % pour voir les faces à l'ombre) | les faces non éclairées restent lisibles |
-| **Brouillard** | linéaire, de 6 à 45 m, couleur de l'horizon | le décor lointain se fond dans le ciel, on sent la profondeur |
+| **Brouillard** | linéaire, de 8 à 85 m, **bleu nuit** (0,085 ; 0,13 ; 0,29) | le décor lointain devient une silhouette sombre sur le ciel, on sent la profondeur |
 | **Lune rouge** | affichée rouge-orangé (1,0 ; 0,40 ; 0,24), comme les reflets des lames | rappel de couleur chaude au milieu du bleu |
 
 > [!TIP]
@@ -49,14 +49,16 @@ Le profil `PostProcess_Nuit` (dans `Assets/Settings`) s'applique à toute la sc�
 
 ### Les « éclairs » du bloom sur Quest
 
-Dans le casque uniquement, des points des arbres et des plantes ToonScapes s'illuminaient brutalement. La cause probable : la puce du Quest calcule en **demi-précision**, et les reflets très serrés du shader de végétation peuvent y produire des pixels **invalides (NaN) ou démesurés**, que le bloom étale ensuite en flash. Le problème ne dépend donc pas de l'intensité du bloom.
+Dans le casque uniquement, des points des arbres et des plantes ToonScapes s'illuminaient brutalement, quelle que soit l'intensité du bloom.
 
-Deux protections, sans toucher au pack :
+**Première tentative (insuffisante)** : *Stop NaN* sur la caméra et bloom plafonné (`clamp` = 8). Le halo a diminué, mais les points brillaient toujours : le pixel lui-même était déjà trop lumineux **avant** le post-traitement.
 
-| Protection | Effet |
-|---|---|
-| **Stop NaN** sur la caméra du rig (`UniversalAdditionalCameraData.stopNaN`) | les pixels invalides sont remplacés avant le post-traitement |
-| **Plafond du bloom** (`clamp` = 8) | un pixel trop lumineux ne peut plus dépasser cette valeur dans le calcul du bloom |
+**Cause trouvée dans le shader de végétation** : son reflet secondaire calcule `normalize(vue + lumière)`. Ce vecteur s'annule quand on regarde une feuille à contre-jour, face à la lune : la normalisation d'un vecteur nul donne un pixel **invalide (NaN)**. Sur PC, il est éliminé ; sur Quest, l'image HDR est stockée dans un format compact (R11G11B10) où ce pixel devient la **valeur maximale** : un blanc éclatant, qui n'est plus « invalide » et échappe donc à Stop NaN.
+
+**Correction à la source** : des copies de nuit des matériaux de végétation (`Materiaux/ToonScapes/Vegetation/*_Nuit`) avec le **reflet secondaire coupé**. Il était à peine visible la nuit, et le pack n'est pas modifié. Stop NaN et le plafond du bloom restent en place, par sécurité.
+
+> [!TIP]
+> **À retenir** : un `normalize()` sur un vecteur qui peut s'annuler (demi-vecteur, différence de positions) est une source classique de NaN. Sur mobile, ces NaN ne se voient pas toujours comme du noir : selon le format de l'image, ils peuvent devenir des points blancs.
 
 ---
 
@@ -122,7 +124,7 @@ Tous sont dans `Assets/FruitNinja/Shaders/`, écrits en HLSL pour l'URP et compa
 
 Un métal n'a presque pas de couleur propre : **il reflète son environnement teinté de sa couleur**. La nuit, un vrai reflet en temps réel serait quasi noir, et coûteux. La solution :
 
-1. une **cubemap par décor** (`Cubemap_Reflet_Or_LowPoly`, `Cubemap_Reflet_Or_HighPoly`) est capturée **une fois** depuis la zone de jeu ; le composant `CubemapOr` de chaque scène la fournit au shader (texture globale), et elle sert aussi de **reflet d'environnement** de la scène, donc aux lames ;
+1. une **cubemap par décor** (`Cubemap_Reflet_Or_LowPoly`, `Cubemap_Reflet_Or_HighPoly`) est capturée **une fois** depuis la zone de jeu ; le composant `CubemapOr` de chaque scène la fournit au shader (texture globale), et elle sert aussi de **reflet d'environnement** et d'image de la **sonde de reflets** (mode *Custom*) de la scène : les lames reflètent exactement la même image que la pomme d'or ;
 2. le shader calcule la direction du reflet (`reflect(-vue, normale)`) et lit la cubemap dans cette direction ;
 3. il teinte le résultat en or et ajoute le reflet de la lune et des bords plus brillants (effet Fresnel).
 
@@ -145,8 +147,22 @@ Le pack ToonScapes – Spring Isles fournit ses propres **shaders URP** (génér
 | Sol | herbe de terrain du pack, shader `SurfaceTop` (projection vue du dessus, tuile de 1 m), peu de reflets |
 | Touffes d'herbe | copie du matériau : normale inversée, brillance 0,84 → 0,1 |
 | Montagnes et collines de fond | copie des matériaux **sans la brume de hauteur intégrée**, réglée pour le jour, qui les délavait |
+| Arbres et plantes | copies de nuit **sans reflet secondaire** (source des éclairs sur Quest, voir plus haut) |
 
 Les matériaux ajustés sont des **copies** dans `Assets/FruitNinja/Materiaux/ToonScapes/` : le pack lui-même n'est jamais modifié.
+
+---
+
+## Le décor low poly lissé
+
+Les modèles du pack *Simple Nature Pack* importaient leurs normales **facettées** depuis le FBX, et les sols ignoraient leur angle de lissage, car Unity privilégiait les groupes de lissage du fichier. Tous les modèles calculent maintenant leurs normales **selon l'angle** (`Normals: Calculate`, `Smoothing Source: From Angle`) :
+
+| Modèles | Angle | Résultat |
+|---|---|---|
+| arbres, buissons, rochers, fleurs, champignons… | 60° | feuillages arrondis ; les grandes arêtes des rochers restent vives |
+| sols et collines | 180° | relief entièrement doux |
+
+L'éclairage précalculé des deux scènes low poly a été refait après ce changement, puisqu'il dépend des normales.
 
 ---
 

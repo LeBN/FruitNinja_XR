@@ -56,7 +56,10 @@ Chaque manette porte un `HapticImpulsePlayer` (vibrations) et ses interacteurs :
 | Scène | Rayons (*Near-Far Interactor*) | Pourquoi |
 |---|---|---|
 | Menus, Debug | **activés** | il faut viser les boutons, les curseurs |
-| Jeu | **désactivés** | on joue au sabre ; un rayon en permanence gênerait la vue |
+| Jeu | **désactivés**, ainsi que l'arc de téléportation et le poke | on joue au sabre ; aucun pointeur ne doit gêner la vue (déplacement au joystick) |
+
+> [!WARNING]
+> Désactiver le rayon dans la scène ne suffit pas : le `ControllerInputActionManager` des Starter Assets le **réactive** à chaque fin de visée de téléportation. `MasquerPointeurs` (sur le rig) coupe donc, à chaque image et juste avant le rendu, le rayon, la téléportation et le poke dans les scènes `Game*`.
 
 Les menus sont des **canvas en espace monde** (`World Space`) avec un `TrackedDeviceGraphicRaycaster` : les rayons des manettes y cliquent comme une souris, et un `EventSystem` avec `XRUIInputModule` fait le lien.
 

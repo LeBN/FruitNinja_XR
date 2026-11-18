@@ -62,7 +62,7 @@ Tu es dans une clairière, la nuit, sous une lune rouge, un sabre dans chaque ma
 
 | Domaine | Ce qui est en place | Pour aller plus loin |
 |---|---|---|
-| **Gameplay** | 3 difficultés (durée 90 / 60 / 45 s, cadence, part de bombes), fruits, pomme d'or, bombes (-3 points), score, classement des 8 meilleurs scores | [Gameplay](docs/02-gameplay.md) |
+| **Gameplay** | 3 difficultés (durée 90 / 60 / 45 s, cadence, part de bombes), fruits, pomme d'or, bombes (-3 points), score, classement des 20 meilleurs scores qui défile tout seul | [Gameplay](docs/02-gameplay.md) |
 | **Découpe** | Coupe réelle des maillages en deux moitiés physiques (EzySlice) au point de contact de la lame | [Gameplay](docs/02-gameplay.md#la-découpe) |
 | **VR** | OpenXR + Meta XR, deux sabres, rayons dans les menus seulement, vibrations, rotation instantanée ou continue, zone de jeu de 7 m, placement des fruits selon ta taille | [VR et interactions](docs/03-vr-et-interactions.md) |
 | **Rendu** | URP, nuit bleue et lune rouge, éclairage précalculé (indirect + AO), occlusion culling, shaders maison | [Rendu et shaders](docs/04-rendu-et-shaders.md) |

@@ -41,6 +41,6 @@ Material:
     - _Intensite: 1.1
     m_Colors:
     - _Couleur: {r: 1, g: 1, b: 1, a: 1}
-    - _Teinte: {r: 1, g: 0.55, b: 0.12, a: 1}
+    - _Teinte: {r: 1, g: 0.5499999, b: 0.11999986, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
